@@ -1,0 +1,21 @@
+/* pages/authorization/authorized-login.wxss */
+.top-container {
+  text-align: center;
+  margin-top: 20%;
+}
+image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.btn {
+  background-color: #00B700;
+  color: #fff;
+  width: 600rpx;
+  margin: 0 auto;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  margin-top: 10%;
+}

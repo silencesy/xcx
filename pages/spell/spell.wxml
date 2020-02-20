@@ -1,0 +1,128 @@
+<!--pages/spell/spell.wxml-->
+<view class="container" wx:if="{{spellInfo}}">
+  <view class="head">
+    <image src="{{spellInfo.goods_info.pic}}">
+    </image>
+    <view class="info">
+      <view class="line2">{{spellInfo.goods_info.title}}</view>
+      <view class="price">
+        <text>￥{{spellInfo.goods_info.price}}</text>
+        <text>￥{{spellInfo.goods_info.originalPrice}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="spell-info">
+    <view class="time">
+      <i-count-down
+        bg="{{true}}"
+        target="{{spellInfo.endTime*1000}}"
+        current="{{spellInfo.currentTime*1000}}"
+        show-day="{{true}}"
+        clear-timer="{{clearTimer}}"
+        bindcallback="myLinsterner"
+        ></i-count-down>
+    </view>
+    <view class="user-avatar-list">
+      <image wx:for="{{spellInfo.headimgurl_array}}" 
+        wx:key="{{index}}" src="{{ item }}"></image>
+      <view  wx:for="{{spellInfo.number_left}}" wx:key="{{index}}" class="empty">?</view>
+    </view>
+    <view class="spell-tip" wx:if="{{flag == 'shareSpell'}}" > 
+      Share with Your Friend, {{spellInfo.number_left}} Spot Left.
+    </view>
+    <view class="spell-tip" wx:if="{{ flag == 'joinSpell' }}">
+      {{spellInfo.number_left}} Spot Left
+    </view>
+    <view wx:if="{{ flag == 'startSpell' }}" class="spell-tip">
+      Completed​​
+    </view>
+    <button wx:if="{{ flag == 'shareSpell' }}" open-type="share">Invite Your Friends</button>
+    <button wx:if="{{ flag == 'startSpell' }}" bindtap="goGoodsDetails">Start Duo Deal</button>
+    <button wx:if="{{ flag == 'joinSpell' }}" bindtap="bindJoinNow">Join Duo Deals</button>
+    <!-- <button bindtap="bindJoinNow">Join Duo Deals</button> -->
+  </view>
+  <!-- 热销商品上拉加载 -->
+  <view class="hotGoods">
+    <goodsRow data="{{hotData}}" />
+  </view>
+  <!-- 拼单过期模态框 -->
+  <i-modal visible="{{ expiredvisible }}" show-cancel="{{ false }}" ok-text="Go Home" bind:ok="goHome">
+    <view>This Group Buy is over!</view>
+  </i-modal>
+  <!-- 选择商品弹出框 -->
+  <i-action-sheet visible="{{ chooseSkuVisible }}" show-cancel bind:cancel="handleCancel"  show-cancel="{{ false }}" mask-closable="{{ true }}">
+    <view class='selece-goods-info' slot="header">
+        <!-- 拼单 -->
+       <view wx:if="{{!skuInfoData}}" class='single-info'>
+        <view class='sku-img-box'>
+          <image src='{{goodsData.pic}}' data-src="{{goodsData.pic}}" bindtap="previewImage" ></image>
+        </view>
+        <view class='info-text'>
+          <view class='price theme-color' wx:if="{{ goodsData.minPrice != goodsData.singleBuyPriceMax}}">
+            ￥{{goodsData.minPrice}} - ￥{{goodsData.singleBuyPriceMax}}
+          </view>
+          <view class='price theme-color' wx:if="{{ goodsData.minPrice == goodsData.singleBuyPriceMax}}">
+            ￥{{goodsData.minPrice}}
+          </view>
+          <view class='prompt'>Please select goods</view>
+          <view class='stock'>stock: {{goodsData.sumStock}}</view>
+        </view>
+        <view class='iconfont icon-guanbi' bindtap='handleCancel'></view>
+       </view>
+       <!-- 单个sku显示 -->
+       <view wx:if="{{skuInfoData}}" class='single-info'>
+        <view class='sku-img-box'>
+          <view class='icon-box'>
+            <image
+              class='icon group' src='../../images/duodeal.png'></image>
+          </view>
+          <image src='{{skuInfoData.pic}}' data-src="{{skuInfoData.pic}}" bindtap="previewImage" ></image>
+        </view>
+        <view class='info-text'>
+          <!-- 拼单商品 -->
+          <view class='price'>
+            <!-- 拼单价格 -->
+            <view>
+              <text class='theme-color'>￥{{skuInfoData.spellPrice}}</text>
+              <text class='original-price' wx:if="{{skuInfoData.price}}">￥{{skuInfoData.price}}</text>
+            </view>
+          </view>
+          <view class='prompt'><text wx:for="{{skuInfoData.propName}}" wx:key="{{index}}">{{item[0]}}</text></view>
+          <view class='stock'>stock: {{skuInfoData.stock}}</view>
+        </view>
+        <view class='iconfont icon-guanbi' bindtap='handleCancel'></view>
+       </view>
+       <scroll-view
+        scroll-y
+        class='sku-box'>
+        <view class="commodity_attr_list"> 
+          <!--每组属性-->
+          <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex" wx:key="{{attrIndex}}"> 
+            <!--属性名-->
+            <view class="attr_name">{{attrValueObj.attrKey}}</view> 
+      
+            <!--属性值-->
+            <view class="attr_value_box"> 
+                <!--每个属性值-->
+                      <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
+                      data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-code="{{attrCode}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex" wx:key="{{valueIndex}}">{{value}}</view> 
+                  </view> 
+              </view> 
+            </view> 
+       </scroll-view>
+       <view class='count'>
+        Quantity
+        <view wx:if="{{!skuInfoData}}">
+            <i-input-number value="{{ number }}" min="1" max="{{goodsData.sumStock}}" bindchange="handleChangeNumber" />
+        </view>
+        <view wx:else>
+            <i-input-number value="{{ number }}" min="1" max="{{skuInfoData.stock}}" bindchange="handleChangeNumber" />
+        </view>
+       </view>
+       <view class='done-btn'>
+        <view class='buy-done' bindtap='bindSpell'>Done</view>
+       </view>
+    </view>
+  </i-action-sheet>
+  <goHome icon="iconfont icon-shanghu1" />
+</view>

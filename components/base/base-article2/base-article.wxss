@@ -1,0 +1,43 @@
+/* components/base/base-article/base-article.wxss */
+.banner-img {
+  width: 100%;
+}
+.article-list {
+  padding: 20rpx;
+  background-color: #eee;
+}
+.article-item {
+  display: flex;
+  padding: 20rpx;
+  border: 1px solid #dfdfdf;
+  margin-bottom: 20rpx;
+  border-radius: 8rpx;
+  background-color: #fff;
+}
+.article-item:last-child {
+  margin-bottom: 0;
+}
+.article-item .article-img {
+  flex: 1;
+  height: 142rpx;
+}
+.article-item .article-info {
+  flex: 2;
+  padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.article-item .article-info .article-name {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.article-item .article-info .article-date {
+  color: #999;
+  font-size: 26rpx;
+}

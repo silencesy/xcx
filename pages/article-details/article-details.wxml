@@ -1,0 +1,31 @@
+<!--pages/article-details/article-details.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class='article-container' wx:if="{{articleData}}">
+  <view class='info'>
+    <view class='title'>{{articleData.title}}</view>
+    <view class='data'>{{articleData.createTime}}</view>
+    <view class='info-content'>
+        <template is="wxParse" data="{{wxParseData:detailsdata.nodes}}"/>
+    </view>
+    <view class='recommendedProduct'>
+      <view class='item' wx:for="{{articleData.itemList}}" wx:key="{{index}}">
+        <image src='{{item.pic}}'></image>
+        <view class='info'>
+          <view class='title line2'>{{item.title}}</view>
+          <view class='price-btn'>
+            <view class='price theme-color'>￥{{item.price}}</view>
+            <view class='buy' data-id='{{item.id}}' bindtap='goGoodsDetails'>Buy</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 文章 -->
+  <view class='recommend'>
+    <view class='title'>
+      <text>More Editor's Pick</text>
+    </view>
+    <baseArticle data="{{articleData.recommend}}" />
+  </view>
+
+</view>

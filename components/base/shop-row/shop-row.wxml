@@ -1,0 +1,7 @@
+<!--components/base/shop-row/shop-row.wxml-->
+<view class='shop-list-container'>
+  <view class='item' wx:for="{{data}}" wx:key="{{index}}" data-id='{{item.id}}' bindtap='goDetails'>
+    <image lazy-load="{{true}}" src="{{item.pic}}"></image>
+    <view class='name line1'>{{item.title}}</view>
+  </view>
+</view>

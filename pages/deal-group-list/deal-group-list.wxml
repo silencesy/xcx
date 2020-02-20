@@ -1,0 +1,13 @@
+<!--pages/deal-group-list/deal-group-list.wxml-->
+<view class='list-container'>
+  <view class='top-content'>
+    <searchRow icon-sousuo="iconfont icon-sousuo search-row" bottomline="{{false}}" />
+    <sort top="iconfont icon-xiangshangjiantou-copy-copy-copy-copy" 
+        down="iconfont icon-xiangshangjiantou-copy-copy-copy" 
+        bind:sortevent="sortevent"/>
+  </view>
+  <pullUpLoading status="{{status}}">
+    <goodsRow rows="2" data="{{data}}" />
+  </pullUpLoading>
+</view>
+

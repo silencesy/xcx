@@ -1,0 +1,87 @@
+/* pages/address-module/address-list.wxss */
+page {
+  background-color: #eee;
+  padding: 20rpx 20rpx 100rpx 20rpx;
+  box-sizing: border-box;
+}
+/* .address-container {
+  background-color: #fff;
+} */
+.item {
+  padding: 20rpx;
+  border-radius: 8rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.bottom .left {
+  display: flex;
+  align-items: center;
+}
+.bottom .left .iconfont {
+  margin-right: 10rpx;
+  color: #ccc;
+}
+.bottom .left .iconfont.active {
+  color: #f9421e;
+}
+.bottom .right {
+  display: flex;
+  align-items: center;
+}
+.bottom .right > view {
+  display: flex;
+  align-items: center;
+}
+.bottom .right > view:nth-child(1) {
+  margin-right: 20rpx;
+}
+.bottom .right > view .iconfont {
+  margin-right: 10rpx;
+  color: #999;
+}
+.add-address-btn {
+  position: fixed;
+  bottom: 20rpx;
+  left: 0;
+  width: 100%;
+  height: 80rpx;
+  z-index: 333;
+  padding: 0 20rpx;
+}
+.add-address-btn .text {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #f9421e;
+  color: #fff;
+  border-radius: 80rpx;
+}
+.icon-shanchu {
+  font-size: 28rpx;
+}
+.not-selected {
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border: 1px solid #dfdfdf;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.bottom .iconfont.icon-xuanzhong1 {
+  color: #F9421E;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 40rpx;
+}
+.active {
+  color: #F9421E;
+}

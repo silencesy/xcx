@@ -1,0 +1,78 @@
+<!--pages/cart/cart.wxml-->
+<view class='cart-container'>
+  <!-- 登录显示 -->
+  <view wx:if="{{isRegister}}">
+    <view wx:if="{{data.data.length==0}}" class='cart-empty'>
+      <view>Your cart is current</view>
+      <view bindtap='goshopping'>Start Shopping</view>
+    </view>
+    <view wx:else class='cart-content'>
+      <view class='shop-container' wx:for="{{data.data}}" wx:for-item="shopItem" wx:for-index="shopIndex" wx:key="{{shopItem.brandId}}">
+        <view class='title'>
+          <view class='icon' data-shopid="{{shopItem.brandId}}" data-isselect='{{shopItem.shopAll}}' bindtap='bindCheckedShop'>
+            <view wx:if="{{shopItem.shopAll}}" class='iconfont icon-xuanzhong1'></view>
+            <view wx:else class='not-selected'></view>
+          </view>
+          <view class='go-shop' data-id='{{shopItem.brandId}}' bindtap='bindGoShop'>
+            <view class='shop-name'>
+              <view class='iconfont icon-shanghu1'></view>
+              <view class='color666'>{{shopItem.brandName}}</view>
+            </view>
+            <view class='iconfont icon-combinedshapefuben'></view>
+          </view>
+        </view>
+        <view class='goods-list' wx:for="{{shopItem.data}}" wx:key="{{item.skuId}}">
+          <view class='icon' data-isselect="{{item.isSelect}}" data-shopid="{{shopItem.brandId}}" data-cartid='{{item.cartId}}' data-skuid="{{item.skuId}}" bindtap='bindChecked'>
+            <view wx:if="{{item.isSelect==1}}" class='iconfont icon-xuanzhong1'></view>
+            <view wx:else class='not-selected'></view>
+          </view>
+          <image data-id='{{item.goodsId}}' bindtap='bindGoGoods' src='{{item.pic}}'></image>
+          <view class='info'>
+            <view data-id='{{item.goodsId}}' bindtap='bindGoGoods' class='name'>{{item.goodsName}}</view>
+            <view data-id='{{item.goodsId}}' bindtap='bindGoGoods' class='attributes'>
+              <view class='color999' wx:for="{{item.prop}}" wx:key="{{index}}">{{item[0]}}</view>
+            </view>
+            <view data-id='{{item.goodsId}}' bindtap='bindGoGoods' class='color999' wx:if="{{item.over}}">{{item.reduce}} less per {{item.over}} purchase</view>
+            <view class='bottom'>
+              <view class='left theme-color'>￥{{item.price}}</view>
+              <view class='right'>
+                <i-input-number data-shopid="{{shopItem.brandId}}" data-cartid="{{item.cartId}}" data-skuid="{{item.skuId}}" value="{{ item.number }}" min="1" max="{{item.stock}}" bindchange="handleChangeNumber" />
+                <view class='iconfont icon-shanchu coloraaa' data-cartid='{{item.cartId}}' data-shopindex='{{shopIndex}}' data-index='{{index}}' data-shopid="{{shopItem.brandId}}" data-skuid="{{item.skuId}}" bindtap='bindDeleteCart'></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{data.data.length!=0}}" class='cart-bottom'>
+      <view class='icon' bindtap='bindCheckedAll'>
+        <view wx:if="{{all}}" class='iconfont icon-xuanzhong1'></view>
+        <view wx:else class='not-selected'></view>
+        <view class='all'>All</view>
+      </view>
+      <view class='buy-info'>
+        <view>
+          <view>Total: <text class='theme-color'>￥{{data.total}}</text></view>
+          <view wx:if="{{data.reduceTotal > 0}}" class='coupon'>Coupon ¥ {{data.reduceTotal}}</view>
+        </view>
+        <view class='buy-box'>
+          <view class='buy' bindtap='bindCheckout'>Checkout Now</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 没有登录显示 -->
+  <view wx:else>
+    <view class='no-login'>
+      <view class='text'>Please log in first!</view>
+      <view>
+        <view class='btn' bindtap='bindGoLogIn'>LOG IN / SIGN UP</view>
+      </view>
+    </view>
+  </view>
+  <!-- 模态框 -->
+  <i-modal visible="{{ isShowLayer }}" cancel-text="Cancel" ok-text="Done" bind:ok="bindDone" bind:cancel="bindCancle">
+      <view>Are you sure to delete?</view>
+  </i-modal>
+
+</view>

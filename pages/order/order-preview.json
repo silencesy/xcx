@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "shopGoodsSection": "/components/base/shop-goods-section/shop-goods-section",
+    "fullReductionSection": "/components/base/full-reduction-section/full-reduction-section",
+    "i-action-sheet": "../../dist/action-sheet/index"
+  }
+}

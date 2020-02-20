@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-input-number": "../../dist/input-number/index",
+    "i-modal": "../../dist/modal/index"
+  },
+  "navigationBarTitleText": "Cart"
+}

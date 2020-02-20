@@ -1,0 +1,30 @@
+<!--components/base/full-reduction-section/full-reduction-section.wxml-->
+<!--components/base/shop-goods-section/shop-goods-section.wxml-->
+<view class='container'>
+  <view>
+    <view wx:for="{{data.data}}" wx:key="{{index}}">
+      <view class='title'>
+        <view class='shopicon'></view>
+        <view class='shop-name'>{{item.brandName}}</view>
+      </view>
+      <view class='content' wx:for="{{item.data}}" wx:key="{{index}}">
+        <view class='info-box'>
+          <image lazy-load="{{true}}" src='{{item.pic}}'></image>
+          <view class='info'>
+            <view class='goods-name'>{{item.goodsName}}</view>
+              <view class='type'><text wx:for="{{item.prop}}" wx:key="{{index}}">{{item[0]}}</text> </view>
+              <view class='bottom'>
+                <view class='price'>￥{{item.price}}</view>
+                <view>x{{item.number}}</view>
+              </view>
+            </view>
+        </view>
+      </view>
+    </view>
+    <view class='full-reduction-row'>
+      <view>Quantity Discount</view>
+      <view class='theme-color'>-￥{{data.reduce}}</view>
+    </view>
+    <view class='after-redution-price'>Total: <text class='theme-color'>￥{{data.total}}</text></view>
+  </view>
+</view>

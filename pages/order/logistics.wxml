@@ -1,0 +1,24 @@
+<!--pages/order/logistics.wxml-->
+<view class='container'>
+  <!-- 没有物流信息 -->
+  <view class='no-logistics' wx:if="{{ data.status == 126 || data.status == 127 || data.status == 128  }}">
+    <view>{{ data.msg }}</view>
+  </view>
+  <!-- 物流信息 -->
+  <view class='logistics' wx:if="{{ data.status == 1 }}">
+    <view class='title-info'>
+      <view>logistics: {{logistics}}</view>
+      <view>company: {{data.com}} ({{data.company}})</view>
+    </view>
+    <view class='list'>
+      <view class='item' wx:for="{{data.list}}" wx:key="{{index}}">
+        <image wx:if="{{index==0}}" src='../../images/pointer.png'></image>
+        <view wx:else class='iconfont icon-dot'></view>
+        <view class='remark-info'>
+          <view>{{item.remark}}</view>
+          <view>{{item.datetime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

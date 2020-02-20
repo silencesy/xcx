@@ -1,0 +1,4 @@
+<view class="countdown-class {{bg?'bg':''}} text-count-down">
+  {{time}}
+</view>
+

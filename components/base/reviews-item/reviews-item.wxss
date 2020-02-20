@@ -1,0 +1,58 @@
+/* components/base/reviews-item/reviews-item.wxss */
+.review-container {
+  background-color: #fff;
+  border-radius: 8rpx;
+  overflow: hidden;
+  border: 1rpx solid #dfdfdf;
+  margin-top: 20rpx;
+}
+.review-container .content {
+  display: flex;
+  padding: 20rpx;
+}
+.review-container .content image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.review-container .content .info {
+  width: 590rpx;
+  padding-left: 20rpx;
+}
+.review-container .content .info .user-name {
+  font-size: 32rpx;
+  color: #222;
+}
+.review-container .content .info .reivews-text {
+  font-size: 28rpx;
+  color: #999;
+}
+.img-box {
+  display: flex;
+  padding: 0 20rpx;
+  margin-bottom: 20rpx;
+}
+.img-box image {
+  width: 118rpx;
+  height: 118rpx;
+  margin-right: 20rpx;
+}
+.img-box image:last-child {
+  margin-right: 0;
+}
+.reply-box {
+  display: flex;
+  padding: 0 20rpx;
+  margin-bottom: 20rpx;
+}
+.reply-box .reply-name {
+  width: 100rpx;
+  color: #222;
+  font-size: 28rpx;
+} 
+.reply-box .reply-info {
+  width: 570rpx;
+  padding-left: 20rpx;
+  color: #999;
+  font-size: 28rpx;
+} 

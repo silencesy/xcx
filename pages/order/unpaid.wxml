@@ -1,0 +1,46 @@
+<!--pages/order/unpaid.wxml-->
+<!--pages/order/payed.wxml-->
+<view wx:if="{{data}}">
+  <view class='container'>
+    <view class='info'>
+      <view>
+        <view>Status :</view>
+        <view class='theme-color'>Unpaid</view>
+      </view>
+      <view>
+        <view>Order No. :</view>
+        <view>{{data.orderNumber}}</view>
+      </view>
+      <view>
+        <view>Ordered:</view>
+        <view>{{data.orderTime}}</view>
+      </view>
+      <view>
+        <view>Receiver:</view>
+        <view>{{data.fullName}} {{data.phone}}</view>
+      </view>
+      <view>
+        <view>Email:</view>
+        <view>{{data.email}}</view>
+      </view>
+      <view>
+        <view>Address:</view>
+        <view>{{data.province}} {{data.regionDetail}}</view>
+      </view>
+      <view>
+        <view>Final Price:</view>
+        <view class='theme-color'>￥{{data.priceTotal}}</view>
+      </view>
+      <view wx:if="{{data.buyerRemark!=0}}">
+        <view>Remark:</view>
+        <view>{{data.buyerRemark}}</view>
+      </view>
+    </view>
+    <view class='bottom-btn'>
+      <view bindtap='payAgain'>Continue To Pay</view>
+      <view bindtap='goHome'>Home</view>
+    </view>
+  </view>
+</view>
+
+

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "pullUpLoading": "/components/base/pull-up-loading/pull-up-loading"
+  }
+}

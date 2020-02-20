@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "pullUpLoading": "/components/base/pull-up-loading/pull-up-loading",
+    "reviewsItem": "/components/base/reviews-item/reviews-item"
+  }
+}

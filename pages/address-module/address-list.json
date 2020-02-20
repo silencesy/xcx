@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "pullUpLoading": "/components/base/pull-up-loading/pull-up-loading",
+    "i-modal": "../../dist/modal/index"
+  },
+  "navigationBarTitleText": "Address Book"
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "goodsRow": "/components/base/goods-row/goods-row",
+    "searchRow": "/components/base/search-row/search-row"
+  },
+  "navigationBarTitleText": "Categories"
+}

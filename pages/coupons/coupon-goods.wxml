@@ -1,0 +1,6 @@
+<!--pages/coupons/coupon-goods.wxml-->
+<view class='container'>
+  <pullUpLoading status="{{status}}">
+    <goodsRow rows="2" data="{{data}}" />
+  </pullUpLoading>
+</view>

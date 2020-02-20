@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "goodsRow": "/components/base/goods-row/goods-row",
+    "sort": "/components/base/sort/sort",
+    "searchRow": "/components/base/search-row/search-row",
+    "pullUpLoading": "/components/base/pull-up-loading/pull-up-loading",
+    "van-action-sheet": "../../dist2/action-sheet/index"
+  }
+}

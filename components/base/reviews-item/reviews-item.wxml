@@ -1,0 +1,25 @@
+<!--components/base/reviews-item/reviews-item.wxml-->
+<view class="review-container">
+  <view class="content">
+    <image src="{{ data.data.headimg_url }}"></image>
+    <view class="info">
+      <view class="user-name">
+        {{ data.data.username }}
+      </view>
+      <view class="reivews-text">
+        {{ data.data.comment }}
+      </view>
+    </view>
+  </view>
+  <view class="img-box" wx:if="{{ data.data.picList.length>0 }}">
+    <image wx:for="{{ data.data.picList }}" data-src="{{item}}" bindtap="previewImage" wx:key="{{ index }}" src="{{ item }}"></image>
+  </view>
+  <view class="reply-box" wx:if="{{ data.data.reply }}">
+    <view class="reply-name">
+      Reply:
+    </view>
+    <view class="reply-info">
+      {{ data.data.reply }}
+    </view>
+  </view>
+</view>

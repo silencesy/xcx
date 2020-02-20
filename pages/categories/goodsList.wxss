@@ -1,0 +1,53 @@
+.guide-container {
+  padding-top: 210rpx;
+}
+.search-input {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 8;
+}
+.guide-top {
+  position: fixed;
+  left: 0;
+  top: 100rpx;
+  width: 100%;
+  display: flex;
+  border-bottom:1rpx solid #dfdfdf;
+  z-index: 8;
+  background-color: #fff;
+}
+.guide-top .destination {
+  width: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20rpx;
+}
+.guide-top .destination .iconfont {
+  transform: rotate(90deg);
+  margin-left: 10rpx;
+}
+.guide-top .guide-sort {
+  width: 500rpx;
+}
+.picker-view {
+  width: 100%; 
+  height: 230px;
+}
+.picker-item {
+  line-height: 50px;
+  text-align: center;
+}
+.picker-btn {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #dfdfdf;
+}
+.picker-btn view {
+  padding: 20rpx;
+}
+.picker-btn view:nth-child(2) {
+  color: #F9421E;
+}

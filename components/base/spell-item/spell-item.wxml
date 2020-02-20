@@ -1,0 +1,21 @@
+<!--components/base/spell-item/spell-item.wxml-->
+<view class="spell-item-container">
+  <view class="content">
+    <image src="{{data.headimg_url}}"></image>
+    <view class="name line1">{{data.nickname}}</view>
+    <view class="info">
+      <view>Only {{data.number_left}} Spot Left</view>
+      <view>
+        <i-count-down
+        bg="{{true}}"
+        target="{{data.endTime*1000}}"
+        current="{{data.currentTime*1000}}"
+        show-day="{{true}}"
+        clear-timer="{{clearTimer}}"
+        bindcallback="myLinsterner"
+        ></i-count-down>
+      </view>
+    </view>
+    <button data-id="{{data.id}}" bindtap="joinNow">Join Now</button>
+  </view>
+</view>

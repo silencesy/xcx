@@ -1,0 +1,18 @@
+<!--components/base/goods-row/goods-row.wxml-->
+<view class='goods-container'>
+  <view class='item-goods {{rows==2?"rows2":""}}' wx:for="{{data}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='goDetails'>
+    <image lazy-load="{{true}}" src='{{item.pic}}' mode='widthFix'></image>
+    <image wx:if="{{item.saleType.type=='sale'}}" class='icon sale' src='../../../images/sale.png'></image>
+    <image wx:if="{{item.saleType.type=='spell'}}" class='icon group' src='../../../images/duodeal.png'></image>
+    <image wx:if="{{item.saleType.type=='group'}}" class='icon group' src='../../../images/group.png'></image>
+    <view class='goods-name'>
+      {{item.title}}
+    </view>
+    <view class='goods-price'>
+      <view class='theme-color'>￥{{item.price}}</view>
+      <view wx:if="{{item.originalPrice}}">￥{{item.originalPrice}}</view>
+    </view>
+  </view>
+  <view class="item-goods rows2 empty" wx:if="{{rows==2}}" wx:for="{{(data.length%2)==0?0:(2-data.length%2)}}" wx:key="{{index}}"></view>
+  <view class="item-goods empty" wx:if="{{rows==3}}" wx:for="{{(data.length%3)==0?0:(3-data.length%3)}}" wx:key="{{index}}"></view>
+</view>

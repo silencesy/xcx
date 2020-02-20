@@ -1,0 +1,27 @@
+/* components/base/shop-row/shop-row.wxss */
+.shop-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  justify-content: space-between;
+}
+.shop-list-container .item {
+  width: 345rpx;
+  border: 1px solid #dfdfdf;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+.shop-list-container .item:nth-last-child(-n+2) {
+  margin-bottom: 0;
+}
+.shop-list-container .item image {
+  width: 340rpx;
+  height: 340rpx;
+  display: block;
+}
+.shop-list-container .item .name {
+  text-align: center;
+  padding: 15rpx 0;
+  background-color: #fff;
+}

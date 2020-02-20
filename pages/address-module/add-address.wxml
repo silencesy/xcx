@@ -1,0 +1,27 @@
+<!--pages/address-module/add-address.wxml-->
+<view class='add-address-container'>
+  <view class='row'>
+    <view><text>*</text> Full Name :</view>
+    <input value='{{data.fullName}}' bindinput='bindName' focus="{{true}}"></input>
+  </view>
+  <view class='row'>
+    <view><text>*</text> Phone :</view>
+    <input bindinput='bindPhone' value='{{data.phone}}'></input>
+  </view>
+  <view class='row'>
+    <view><text>*</text> Email :</view>
+    <input bindinput='bindEmail' value='{{data.email}}'></input>
+  </view>
+  <view class='addres-info-box' wx:if="{{!tickting}}">
+    <textarea class='addres-info' bindinput='bindCH' value='{{data.province}}' placeholder="* Please write down your detailed address in Chinese." maxlength="{{300}}" cursor-spacing="40" />
+    <textarea class='addres-info' bindinput='bindEH' value='{{data.regionDetail}}' placeholder="Please write down your detailed address in English(city name is required)" maxlength="{{300}}" cursor-spacing="40" />
+  </view>
+  <view class='default-btn' bindtap='setDefalut' wx:if="{{!tickting}}">
+    <view wx:if="{{data.isDefault == 1}}" class='iconfont icon-xuanzhong1'></view>
+    <view wx:else class='not-selected'></view>
+    <view class="{{data.isDefault == 1?'active':''}}">Default</view>
+  </view>
+  <view class='add-address-btn' bindtap='Submit'>
+    <view class='text'>Submit</view>
+  </view>
+</view>

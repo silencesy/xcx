@@ -1,0 +1,10 @@
+<!--pages/shop-list/shop-list.wxml-->
+<view>
+  <view class='top-search'>
+    <searchRow icon-sousuo="iconfont icon-sousuo search-row" searchClass="shops" />
+  </view>
+  <pullUpLoading status="{{status}}">
+    <shopRow data="{{data}}" line1="line1"/>
+  </pullUpLoading>
+</view>
+

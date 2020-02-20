@@ -1,0 +1,9 @@
+<!--components/base/pull-up-loading/pull-up-loading.wxml-->
+<view>
+  <view>
+    <slot></slot>
+    <i-load-more wx:if="{{status == 'loading'}}" tip="loading"/>
+    <view wx:if="{{status == 'end'}}" class='end'>- End -</view>
+    <view wx:if="{{status == 'nodata'}}" class='no-data'>- No data -</view>
+  </view>
+</view>

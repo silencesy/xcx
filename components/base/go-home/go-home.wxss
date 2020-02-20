@@ -1,0 +1,11 @@
+/* components/base/go-home/go-home.wxss */
+.go-home {
+  position: fixed;
+  right: 40rpx;
+  bottom: 200rpx;
+  font-size: 45rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10rpx;
+  color: #666;
+}

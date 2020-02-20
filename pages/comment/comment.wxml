@@ -1,0 +1,42 @@
+<!--pages/comment/comment.wxml-->
+<view class="container" wx:if="{{ data }}">
+  <view class="item-shop">
+    <view class='title'>
+      <view class='iconfont icon-shanghu1'></view>
+      <view class='shop-name'>{{data.brandName}}</view>
+    </view>
+    <view class="content">
+      <view class='info-box'>
+        <image src='{{ data.pic }}'></image>
+        <view class='info'>
+        <view class='goods-name'>{{data.goodsName}}</view>
+          <view class='type'> <text wx:for="{{data.prop}}" wx:key="{{index}}">{{item[0]}}</text> </view>
+          <view class='bottom'>
+            <view class='price'>￥{{data.price}}</view>
+            <view>x{{data.number}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="reviews-content">
+    <view class="reviews-title">Review</view>
+    <textarea maxlength="200" bindinput="bindinputcontent" placeholder="Leave your comments here. (Maximum 200 words).">
+    </textarea>
+    <view class='img-box'>
+      <view class='img-item' wx:for="{{ imgData }}" wx:key="{{ index }}">
+        <image mode='aspectFill' src="{{ item }}"></image>
+        <view data-index='{{ index }}' class='delete' bindtap='deleteImg'>
+          <i-icon size="20" color="#f6b400" type="delete" />
+        </view>
+      </view>
+      <view wx:if="{{ imgData.length < 5 }}" class='img-item' bindtap='chooseImage'>
+        <i-icon size="48" type="add" />
+      </view>
+      <view class="tip-info">Maximum 5 photos with PNG/JPG/jpeg format</view>
+    </view>
+  </view>
+  <view class="submit-btn" bindtap="submitReivews">
+    Submit
+  </view>
+</view>

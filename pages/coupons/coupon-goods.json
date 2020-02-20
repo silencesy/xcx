@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "goodsRow": "/components/base/goods-row/goods-row",
+    "pullUpLoading": "/components/base/pull-up-loading/pull-up-loading"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 200
+}

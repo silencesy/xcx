@@ -1,0 +1,11 @@
+.text-count-down {
+  background-color: #F9421E;
+  color: #fff;
+  padding: 0 10rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+.text-count-down.bg {
+  background-color: #fff;
+  color: #aaa;
+}

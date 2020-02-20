@@ -1,0 +1,65 @@
+/* pages/article-details/article-details.wxss */
+@import "/wxParse/wxParse.wxss";
+/* .article-container {
+  padding: 20rpx 20rpx 0 20rpx;
+} */
+.info {
+  padding: 20rpx 20rpx 0 20rpx;
+}
+.article-container .title {
+  font-weight: 900;
+  font-size: 32rpx;
+}
+.article-container .data {
+  color: #999;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+.recommend .title {
+  background-color: #eee;
+  padding-left: 20rpx;
+}
+.recommend .title text {
+  color: #f9421e;
+  border-bottom: 2px solid #f9421e;
+  margin: 30rpx 0 20rpx 0;
+  display: inline-block
+}
+.recommendedProduct {
+  background-color: #eee;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+.recommendedProduct .item {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+.recommendedProduct .item:last-child {
+  margin-bottom: 0rpx;
+}
+.recommendedProduct .item image {
+  display: inline-block;
+  width: 180rpx;
+  height: 180rpx;
+}
+.recommendedProduct .item .info {
+  flex: 1;
+}
+.recommendedProduct .item .info .price-btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+.recommendedProduct .item .info .price-btn view {
+  line-height: 50rpx;
+}
+.recommendedProduct .item .info .price-btn view:nth-child(1) {
+  width: 150rpx;
+}
+.recommendedProduct .item .info .price-btn view:nth-child(2) {
+  width: 200rpx;
+  text-align: center;
+  background-color: #F9421E;
+  color: #fff;
+  border-radius: 40rpx;
+}

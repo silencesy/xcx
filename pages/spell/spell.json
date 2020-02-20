@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "goodsRow": "/components/base/goods-row/goods-row",
+    "i-count-down": "../../dist/count-down/index",
+    "i-action-sheet": "../../dist/action-sheet/index",
+    "i-modal": "../../dist/modal/index",
+    "i-input-number": "../../dist/input-number/index",
+    "goHome": "/components/base/go-home/go-home"
+  }
+}

@@ -1,0 +1,38 @@
+<!--pages/address-module/address-list.wxml-->
+<view class='address-container'>
+  <pullUpLoading status="{{status}}">
+    <view class='item' wx:for="{{data}}" wx:key="{{index}}">
+      <view data-id='{{item.id}}' bindtap='choose'>
+        <view class='name'>{{item.fullName}}</view>
+        <view class='phone'>{{item.phone}}</view>
+        <view class='email'>{{item.email}}</view>
+        <view class='address'>{{item.province}}{{item.regionDetail}}</view>
+      </view>
+      <view class='bottom'>
+        <view class='left' data-index='{{index}}' data-id='{{item.id}}' bindtap='bindSetDefault'>
+          <view wx:if="{{item.isDefault == 1}}" class='iconfont icon-xuanzhong1'></view>
+          <view wx:else class='not-selected'></view>
+          <view class="{{item.isDefault == 1?'active':''}}">Default</view>
+        </view>
+        <view class='right'>
+          <view class='edit' data-id='{{item.id}}' bindtap='bindEdit' >
+            <view class='iconfont icon-bianji'></view>
+            <view>Edit</view>
+          </view>
+          <view data-index='{{index}}' data-id='{{item.id}}' bindtap='bindDelete' class='delete'>
+            <view class='iconfont icon-shanchu'></view>
+            <view>Delete</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </pullUpLoading>
+  
+  <view class='add-address-btn' bindtap='bindGoAddAddress'>
+    <view class='text'>Add New Shipping Address</view>
+  </view>
+  <!-- 模态框 -->
+  <i-modal visible="{{ isShowLayer }}" cancel-text="Cancel" ok-text="Done" bind:ok="bindDone" bind:cancel="bindCancle">
+      <view>Are you sure to delete?</view>
+  </i-modal>
+</view>

@@ -1,0 +1,17 @@
+/* components/base/pull-up-loading/pull-up-loading.wxss */
+.end {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #999;
+}
+.no-data {
+  position: fixed;
+  left: 0;
+  top: 35%;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #999;
+}

@@ -1,0 +1,35 @@
+<!--pages/shop-details/shop-details.wxml-->
+<view class='shop-container' wx:if="{{shopData}}">
+  <view class='head'>
+    <view>
+      <image src='{{shopData.pic}}'></image>
+      <text>{{shopData.name}}</text>
+    </view>
+    <view>
+      <view bindtap='bindSaveShop' class='iconfont {{shopData.isCollect==1?"icon-shoucang1":"icon-shoucang"}}'></view>
+      <view bindtap='bindShopSearch' class='iconfont icon-sousuo'></view>
+    </view>
+  </view>
+  <view class='banner'>
+    <view class='home active'>Home</view>
+    <view bindtap='bindGoAllGoods'>All</view>
+    <view bindtap='binGoNewGoods'>New Arrivals</view>
+  </view>
+  <view class='swiper'>
+    <baseSwiper swiperData="{{shopData.figure}}" />
+  </view>
+  <view class='content'>
+    <image data-flag="{{item.url}}" bindtap="goDetails" wx:for="{{shopData.content}}" wx:key="{{index}}" mode='widthFix' src='{{item.pic}}'></image>
+  </view>
+  <view class='bottom-row'>
+    <view bindtap='goHome'>
+      <view class='iconfont icon-shanghu1'></view>
+      <view>thMart-Home</view>
+    </view>
+    <view>
+      <view class='iconfont icon-kefu'></view>
+      <button class="chat-btn" open-type="contact"></button>
+      <view>Chat</view>
+    </view>
+  </view>
+</view>

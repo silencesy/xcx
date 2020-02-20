@@ -1,0 +1,36 @@
+<view class='guide-container'>
+  <view class='guide-top'>
+    <view class='destination' bindtap='bindShowActions'>
+      <view class='line1'>{{chooseText}}</view>
+      <view class='icon-combinedshapefuben iconfont'></view>
+    </view>
+    <view class='guide-sort'>
+      <sort top="iconfont icon-xiangshangjiantou-copy-copy-copy-copy" 
+      down="iconfont icon-xiangshangjiantou-copy-copy-copy" 
+      bind:sortevent="sortevent" borderBottom="{{false}}"/>
+    </view>
+  </view>
+  
+  <van-action-sheet
+    show="{{ show }}"
+    bind:close="close"
+    close-on-click-overlay="{{true}}"
+  >
+    <view class='picker-btn'>
+      <view bindtap='cancel'>
+        Cancel
+      </view>
+      <view bindtap='confirm'>
+        Done
+      </view>
+    </view>
+      <picker-view indicator-style="height: 50px;" class='picker-view' value="{{value}}" bindchange="bindPickerChange">
+    <picker-view-column>
+      <view wx:for="{{categoriesData}}" wx:key="{{index}}" class='picker-item'>{{item.title}}</view>
+    </picker-view-column>
+  </picker-view>
+  </van-action-sheet>
+  <pullUpLoading status="{{status}}">
+    <goodsRow rows="2" data="{{data}}" />
+  </pullUpLoading>
+</view>

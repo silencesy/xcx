@@ -1,0 +1,46 @@
+/* pages/order/payed.wxss *//* pages/order/pay.wxss */
+page {
+  background-color: #eee;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.status {
+  text-align: center;
+}
+.status .iconfont {
+  font-size: 80rpx;
+  color: #6EA55D;
+}
+.status .info {
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.container {
+  padding: 15rpx 20rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+.container .info > view {
+  display: flex;
+  line-height: 60rpx;
+}
+.container .info > view > view:nth-child(1) {
+  flex: 1;
+  color: #999;
+}
+.container .info > view > view:nth-child(2) {
+  flex: 2;
+}
+.bottom-btn {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+}
+.bottom-btn view {
+  width: 300rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 60rpx;
+  border: 1px solid #dfdfdf;
+  text-align: center;
+}

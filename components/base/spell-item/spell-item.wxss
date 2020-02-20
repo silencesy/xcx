@@ -1,0 +1,47 @@
+/* components/base/spell-item/spell-item.wxss */
+.spell-item-container {
+  padding: 0 20rpx;
+}
+.spell-item-container .content {
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #dfdfdf;
+  padding: 20rpx 0;
+}
+.spell-item-container .content image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.spell-item-container .content .name {
+  width: 90rpx;
+  height: 90rpx;
+  line-height: 80rpx;
+  margin-left: 20rpx;
+}
+.spell-item-container .content .info {
+  width: 320rpx;
+  text-align: center;  
+}
+.spell-item-container .content button {
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #F9421E;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 0;
+  border-radius: 40rpx;
+}
+
+
+.line1 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+

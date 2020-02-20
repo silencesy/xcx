@@ -1,0 +1,34 @@
+/* pages/shop-search/shop-search.wxss */
+page {
+  padding-top: 190rpx;
+}
+.search-row {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #fff;
+}
+.search-input-box {
+  height: 80rpx;
+  background-color: #fff;
+}
+.search-input-box {
+  padding: 20rpx 20rpx 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+.search-btn {
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 20rpx;
+  color: #666;
+}
+.search-input-box input {
+  background-color: #EEE;
+  width: 100%;
+  height: 60rpx;
+  padding-left: 40rpx;
+  border-radius: 40rpx;
+}

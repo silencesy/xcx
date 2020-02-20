@@ -1,0 +1,45 @@
+/* pages/categories/categories.wxss */
+.categroies-container {
+  padding-top: 100rpx;
+}
+.categroies-search {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.categories-icon-box {
+ padding: 40rpx;
+ overflow: hidden;
+}
+.categories-icon-box .item {
+  float: left;
+  width: 120rpx;
+  height: 202rpx;
+  margin-right: 62rpx;
+  margin-bottom: 20rpx;
+}
+.categories-icon-box .item:nth-child(4n) {
+  margin-right: 0;
+}
+.categories-icon-box .item image {
+  width: 120rpx;
+  height: 120rpx;
+}
+.categories-icon-box .item .name {
+  text-align: center;
+  color: #222;
+  font-size: 26rpx;
+}
+.hot-goods-content {
+  width: 100%;
+}
+.more-icon {
+  padding: 0 70rpx;
+  margin-bottom: 30rpx;
+}
+.more-icon image {
+  width: 610rpx;
+  height: 26rpx;
+}

@@ -1,0 +1,29 @@
+<!--pages/index/index.wxml-->
+<view class='home-container' wx:if="{{homeData}}">
+  <!-- 顶部搜索栏 -->
+  <view class="top-search" style="background-color:{{backgroundColor}}" bindtap='bindGoSearch'>
+    <view class="input {{boxshaow?'boxshaow':''}}">
+      <view>Search</view>
+      <view class='iconfont icon-sousuo'></view>
+    </view>
+  </view>
+  <!-- 顶部轮播图 -->
+  <view class='top-swiper'>
+    <baseSwiper swiperData="{{homeData.figure}}" />
+  </view>
+  <!-- 今日热销推荐 -->
+  <floor data="{{homeData.deal}}" bannerUrl="deal" />
+  <!-- 拼单 -->
+  <floor data="{{homeData.pditem}}" jump="{{false}}" />
+  <!-- 团购 -->
+  <floor data="{{homeData.groupBuying}}" bannerUrl="group" />
+  <!-- 商品分类楼层 -->
+  <floor wx:for="{{homeData.category}}" data="{{item}}" wx:key="{{index}}" />
+  <!-- 商户 -->
+  <floorShop data="{{homeData.shop}}" />
+  <!-- 热销商品banner -->
+  <image class='hot-banner' mode="widthFix" src='{{homeData.hotProducts.pic}}'></image>
+  <!-- 热销商品上拉加载 -->
+  <goodsRow data="{{hotData}}" />
+  <i-load-more wx:if="{{showLoading}}" tip="loading"/>
+</view>

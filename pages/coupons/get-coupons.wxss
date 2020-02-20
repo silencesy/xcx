@@ -1,0 +1,45 @@
+/* pages/coupons/get-coupons.wxss */
+page {
+  background-color: #eee;
+}
+image.width100 {
+  width: 100%;
+}
+.list {
+  padding: 12rpx 20rpx;
+}
+.item {
+  position: relative;
+  margin-bottom: 10rpx;
+}
+.lingqu {
+  position: absolute;
+  top: 50rpx;
+  right: 120rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+.item button {
+  background-color: #F9421E;
+  color: #fff;
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 60rpx;
+  right: 10rpx;
+  padding: 0;
+}
+.text-content {
+  padding: 0 20rpx;
+  margin-bottom: 40rpx;
+}
+.quyu {
+  width: 400rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 0;
+  bottom: 25rpx;
+}

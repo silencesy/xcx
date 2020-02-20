@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "pullUpLoading": "/components/base/pull-up-loading/pull-up-loading",
+    "orderItem": "/components/base/order-item/order-item",
+    "i-modal": "../../dist/modal/index",
+    "goHome": "/components/base/go-home/go-home"
+  }
+}

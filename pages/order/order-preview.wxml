@@ -1,0 +1,81 @@
+<!--pages/order/order-preview.wxml-->
+<view class='container' wx:if="{{data}}">
+  <!-- 地址 -->
+  <view class='address-info' bindtap='goAddressList'>
+    <view class='info'>
+      <view class='left' wx:if="{{addressData}}">
+        <view class='name-phone'>
+          <view class='name'>
+            {{addressData.fullName}}
+          </view>
+          <view>
+            {{addressData.phone}}
+          </view>
+        </view>
+        <view class='email'>{{addressData.email}}</view>
+        <view class='address-details'>{{addressData.province}} {{addressData.regionDetail}}</view>
+      </view>
+      <view class='left' wx:else>Add Shipping Address</view>
+      <view class='right iconfont icon-combinedshapefuben'></view>
+    </view>
+    <image src='../../images/letter.jpg'></image>
+  </view>
+  <!-- 春运提示 -->
+  <view wx:if="{{springTips == 1}}" class="spring-tips">
+    * Dear customer, please note that our delivery service will be suspended during Chinese New Year Holiday (Jan.14 - Feb.3). Thank you for your understanding!
+  </view>
+  <!-- 满减块 -->
+  <fullReductionSection
+     wx:for="{{data.overReduceArray}}" 
+     shopicon="iconfont icon-shanghu1" 
+     wx:key="{{index}}" 
+     data="{{item}}" />
+  <!-- 普通商品模块 -->
+  <shopGoodsSection wx:if="{{data.brandArray}}" wx:for="{{data.brandArray}}" 
+    shopicon="iconfont icon-shanghu1" 
+    data="{{item}}" wx:key="{{index}}" 
+    status='showTotalPrice' 
+    isgo="{{false}}" />
+  <!-- 选择优惠券 -->
+  <view class='choose-coupon' bindtap='showCouponList' wx:if="{{data.userCouponList != 0}}">
+    <view>thMart-Coupons</view>
+    <view>
+      <view wx:if="{{fullReduction.couponId}}" class='theme-color'>-￥{{fullReduction.reduce}}</view>
+      <view wx:else class='choose-tip theme-color'>You have {{data.userCouponList.length}} discount coupons</view>
+      <view class='iconfont icon-combinedshapefuben'></view>
+    </view>
+  </view>
+  <!-- 邮费 -->
+  <view class='shipping' wx:if="{{data.feeTotal>0}}">
+    <view>Shipping fee</view>
+    <view class='theme-color'>¥ {{data.feeTotal}}</view>
+  </view>
+  <!-- 备注 -->
+  <view class='remark'>
+    <textarea bindinput="remakeInput" placeholder='Remark' maxlength="{{500}}"></textarea>
+  </view>
+  <!-- 底部栏 -->
+  <view class='bottom-row'>
+    <view>Final Price: <text class='theme-color'>￥{{data.total}}</text></view>
+    <view bindtap='goPay' class='btn'>Place Your Order</view>
+  </view>
+
+  <!-- 选着优惠券 -->
+  <i-action-sheet visible="{{ couponVisible }}" show-cancel bind:cancel="handleCancelCoupon"  show-cancel="{{ false }}" mask-closable="{{ true }}">
+    <view class='layer-container' slot="header">
+      <view class='list'>
+        <view class='title'>thMart-Coupons</view>
+        <view class='item' data-id='{{item.couponId}}' bindtap='changeChooseCoupons' wx:for="{{data.userCouponList}}" wx:key="{{index}}">
+          <view class='name'>{{item.name}}</view>
+          <view class='reduce-icon'>
+            <text>reduce: {{item.reduce}}</text>
+            <text wx:if="{{!item.checked}}" class='no-choose'></text>
+            <image wx:else="{{item.checked}}" src='../../images/pointer.png'></image>
+          </view>
+        </view>
+      </view>
+      <view bindtap='handleCancelCoupon' class='done'>Done</view>
+    </view>
+  </i-action-sheet>
+    
+</view>

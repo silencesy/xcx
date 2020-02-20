@@ -1,0 +1,18 @@
+<!--pages/shop-goods-list/shop-goods-list.wxml-->
+<view class='shop-goods-container'>
+  <view class='top-fixed'>
+    <view class='banner' bindtap='tab'>
+      <view data-id='home'>Home</view>
+      <view data-id='all' 
+            class='option-item {{activeClass=="all"?"active":""}}'>All</view>
+      <view data-id='new'
+            class='option-item {{activeClass=="new"?"active":""}}'>New Arrivals</view>
+    </view>
+    <sort top="iconfont icon-xiangshangjiantou-copy-copy-copy-copy" 
+          down="iconfont icon-xiangshangjiantou-copy-copy-copy" 
+          bind:sortevent="sortevent"/>
+  </view>
+  <pullUpLoading status="{{status}}">
+      <goodsRow rows="2" data="{{data}}" />
+    </pullUpLoading>
+</view>

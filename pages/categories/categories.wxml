@@ -1,0 +1,18 @@
+<!--pages/categories/categories.wxml-->
+<view class='categroies-container'>
+  <view class='categroies-search'>
+    <searchRow icon-sousuo="iconfont icon-sousuo search-row" />
+  </view>
+  <view class='categories-icon-box'>
+    <view class='item' wx:for="{{categoryData}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='goDetails'>
+      <image mode='widthFix' src='{{item.pic}}'></image>
+      <view class='name line2'>{{item.title}}</view>
+    </view>
+  </view>
+  <view class='more-icon'>
+    <image mode='widthFix' src='../../images/more-goods.png'></image>
+  </view>
+  <view class='hot-goods-content'>
+    <goodsRow data="{{data}}" />
+  </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "pullUpLoading": "/components/base/pull-up-loading/pull-up-loading",
+    "shopRow": "/components/base/shop-row/shop-row",
+    "goodsRow": "/components/base/goods-row/goods-row",
+    "baseArticle": "/components/base/base-article2/base-article"
+  }
+}

@@ -1,0 +1,316 @@
+<!--pages/goods-details/goods-details.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class='goods-contianer' wx:if="{{goodsData}}">
+  <view class='top-swiper'>
+    <image wx:if="{{goodsData.type=='sale'}}" class='icon sale' src='../../images/sale.png'></image>
+    <image wx:if="{{goodsData.type=='group'}}" class='icon group' src='../../images/group.png'></image>
+    <image wx:if="{{goodsData.type=='spell'}}" class='icon group' src='../../images/duodeal.png'></image>
+    <baseSwiper swiperData="{{goodsData.figure}}" />
+    <view class='count-down' wx:if="{{goodsData.group.endTime}}">
+      <view class='left'>
+        <view class='price-range' wx:if="{{goodsData.minPrice!=goodsData.maxPrice}}">
+          ￥{{goodsData.minPrice}} - ￥{{goodsData.maxPrice}}
+        </view>
+        <view class='price-range' wx:if="{{goodsData.minPrice==goodsData.maxPrice}}">
+          ￥{{goodsData.minPrice}}
+        </view>
+        <view class='arrow'></view>
+      </view>
+      <view class='right'>
+        <view class='rectangle'>
+        </view>
+        <i-count-down
+        target="{{goodsData.group.endTime*1000}}"
+        current="{{goodsData.group.currentTime*1000}}"
+        show-day="{{true}}"
+        clear-timer="{{clearTimer}}"
+        bindcallback="myLinsterner"
+        ></i-count-down>
+      </view>
+      
+    </view>
+  </view>
+  
+  <view class='info'>
+    <view class='name'>{{goodsData.title}}</view>
+    <view class='price-range' wx:if="{{goodsData.minPrice!=goodsData.maxPrice}}">
+      ￥{{goodsData.minPrice}} - ￥{{goodsData.maxPrice}}
+    </view>
+    <view class='price-range' wx:if="{{goodsData.minPrice==goodsData.maxPrice}}">
+      ￥{{goodsData.minPrice}}
+    </view>
+    <view class='prompt'>
+      * This product ships to Mainland China only.(An extra shipping fee will be charged for HKSAR,MCSAR and other countries/regions)
+    </view>
+  </view>
+  <!-- 弹出购买模态框 -->
+  <view wx:if="{{ goodsData.type != 'spell' }}" class='Specifications' data-type='all' bindtap='openBuyInfo'>
+		Specifications
+    <view class='iconfont icon-combinedshapefuben'></view>
+  </view>
+  <!-- 拼单列表 -->
+  <view class="reviews-box" wx:if="{{goodsData.spellInfo.spellList.length>0}}">
+    <view class='reviews' bindtap="showSpellList">
+      Group Buy List
+      <view wx:if="{{goodsData.spellInfo.spellList.length>=2}}" class='iconfont icon-combinedshapefuben'></view>
+    </view>
+    <spellItem wx:for="{{goodsData.spellInfo.spellList}}" bind:showSpell="openBuyInfo" data="{{item}}" wx:key="{{index}}" />
+  </view>
+  <!-- 评论 -->
+  <view class="reviews-box">
+    <view class='reviews' bindtap="goReviews">
+      Reviews({{reviews.length}})
+      <view class='iconfont icon-combinedshapefuben'></view>
+    </view>
+    <view class="reviews-item" wx:for="{{ reviews }}" wx:key="{{ index }}">
+      <image src="{{item.data.headimg_url}}"></image>
+      <view class="reviews-info">
+        <view class="reviews-name">{{item.data.username}}</view>
+        <view class="reviews-text">{{item.data.comment}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 满减和获取优惠券 -->
+  <view class='special-offers' wx:if="{{!(goodsData.overReduce.length == 0 && goodsData.couponList.length == 0)}}">
+    <view>Special Offers</view>
+    <view class='reduce' wx:if="{{goodsData.overReduce.length != 0}}">
+      <view>￥{{goodsData.overReduce.over}}-{{goodsData.overReduce.reduce}}</view> <view>{{goodsData.overReduce.name}}</view>
+    </view>
+    <view class='coupon' bindtap='getCoupon' wx:if="{{goodsData.couponList.length>0}}">
+      <view class='reduce-info'>
+        <view>￥{{goodsData.couponList[0].reduce}}</view>
+        <view>{{goodsData.couponList[0].name}}</view>
+      </view>
+      <view class='icon-combinedshapefuben iconfont'></view>
+    </view>
+  </view>
+  <view class='details-title'>
+    Details
+  </view>
+  <view class='info-content'>
+      <template is="wxParse" data="{{wxParseData:detailsdata.nodes}}"/>
+  </view>
+
+  <!-- 拼单商品显示 -->
+  <view class='goods-bottom-btn spell' wx:if="{{ goodsData.type == 'spell' }}">
+    <view class='home' bindtap='goHome'>
+      <view class='iconfont icon-shanghu1'></view>
+      <view>Home</view>
+    </view>
+    <view class='chat'>
+      <view class='iconfont icon-kefu'></view>
+      <view class="chat-text">Chat</view>
+      <button class="chat-btn" open-type="contact"></button>
+    </view>
+    <view class='save' bindtap='bindsSaveGoods'>
+      <view class='iconfont icon-shoucang1 {{goodsData.isCollect==1?"theme-color":""}}'></view>
+      <view>Save</view>
+    </view>
+    <view class='add-cart' data-type='buy' bindtap='openBuyInfo'>
+      <view>￥{{goodsData.singleBuyPrice}}</view>
+      <view>Buy Now</view>
+    </view>
+    <view class='buy' data-type='spell' bindtap='openBuyInfo'>
+      <view>￥{{ goodsData.minPrice }}</view>
+      <view>Start Duo Deal</view>
+    </view>
+  </view>
+  <!-- 普通商品促销团购显示 -->
+  <view class='goods-bottom-btn' wx:else>
+    <view class='home' bindtap='goHome'>
+      <view class='iconfont icon-shanghu1'></view>
+      <view>Home</view>
+    </view>
+    <view class='chat'>
+      <view class='iconfont icon-kefu'></view>
+      <view class="chat-text">Chat</view>
+      <button class="chat-btn" open-type="contact"></button>
+    </view>
+    <view class='save' bindtap='bindsSaveGoods'>
+      <view class='iconfont icon-shoucang1 {{goodsData.isCollect==1?"theme-color":""}}'></view>
+      <view>Save</view>
+    </view>
+    <view class='add-cart' data-type='cart' bindtap='openBuyInfo'>Add To Cart</view>
+    <view class='buy' data-type='buy' bindtap='openBuyInfo'>Buy Now</view>
+  </view>
+
+  <!-- 购物车图标 -->
+  <view bindtap='bindGoCart' class='icon-gouwuche iconfont cart-icon'></view>
+  <!-- 海报 -->
+  <view class="poster">
+    <image src="../../images/share.png"></image>
+    <poster id="poster" blocks="{{blocks}}" goodsId="{{goodsData.id}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+      <button class="btn"></button>
+    </poster>
+  </view>
+
+  <!-- 选择商品弹出框 -->
+  <i-action-sheet visible="{{ visible }}" show-cancel bind:cancel="handleCancel"  show-cancel="{{ false }}" mask-closable="{{ true }}">
+    <view class='selece-goods-info' slot="header">
+        <!-- 拼单 -->
+       <view wx:if="{{!skuInfoData && goodsData.type == 'spell'}}" class='single-info'>
+        <view class='sku-img-box'>
+          <image src='{{goodsData.pic}}' data-src="{{goodsData.pic}}" bindtap="previewImage" ></image>
+        </view>
+        <view class='info-text'>
+          <view class='price theme-color' wx:if="{{ isSpellSinglePrice && goodsData.minPrice != goodsData.singleBuyPriceMax}}">
+            ￥{{goodsData.minPrice}} - ￥{{goodsData.singleBuyPriceMax}}
+          </view>
+          <view class='price theme-color' wx:if="{{ isSpellSinglePrice && goodsData.minPrice == goodsData.singleBuyPriceMax}}">
+            ￥{{goodsData.minPrice}}
+          </view>
+          <view class='price theme-color' wx:if="{{ !isSpellSinglePrice && goodsData.singleBuyPrice != goodsData.maxPrice}}">
+            ￥{{goodsData.singleBuyPrice}} - ￥{{goodsData.maxPrice}}
+          </view>
+          <view class='price theme-color' wx:if="{{ !isSpellSinglePrice && goodsData.singleBuyPrice == goodsData.maxPrice}}">
+            ￥{{goodsData.singleBuyPrice}}
+          </view>
+          <view class='prompt'>Please select goods</view>
+          <view class='stock'>stock: {{goodsData.sumStock}}</view>
+        </view>
+        <view class='iconfont icon-guanbi' bindtap='handleCancel'></view>
+       </view>
+       <!-- 非拼单 -->
+       <view wx:if="{{!skuInfoData && goodsData.type != 'spell'}}" class='single-info'>
+        <view class='sku-img-box'>
+          <image src='{{goodsData.pic}}' data-src="{{goodsData.pic}}" bindtap="previewImage" ></image>
+        </view>
+        <view class='info-text'>
+          <view class='price theme-color' 
+            wx:if="{{ goodsData.minPrice != goodsData.maxPrice}}">
+            ￥{{goodsData.minPrice}} - ￥{{goodsData.maxPrice}}
+          </view>
+          <view class='price theme-color' 
+            wx:if="{{ goodsData.minPrice == goodsData.maxPrice}}">
+            ￥{{goodsData.minPrice}}
+          </view>
+          <view class='prompt'>Please select goods</view>
+          <view class='stock'>stock: {{goodsData.sumStock}}</view>
+        </view>
+        <view class='iconfont icon-guanbi' bindtap='handleCancel'></view>
+       </view>
+       <!-- 单个sku显示 -->
+       <view wx:if="{{skuInfoData}}" class='single-info'>
+        <view class='sku-img-box'>
+          <view class='icon-box'>
+            <image wx:if="{{skuInfoData.type=='sale'}}" class='icon sale' src='../../images/sale.png'></image>
+            <image wx:if="{{skuInfoData.type=='group'}}" class='icon group' src='../../images/group.png'></image>
+            <image wx:if="{{skuInfoData.type=='spell' && isSpellSinglePrice}}" 
+              class='icon group' src='../../images/duodeal.png'></image>
+          </view>
+          <image src='{{skuInfoData.pic}}' data-src="{{skuInfoData.pic}}" bindtap="previewImage" ></image>
+        </view>
+        <view class='info-text'>
+          <!-- 非拼单商品单个sku价格 -->
+          <view class='price' wx:if="{{skuInfoData.type != 'spell'}}">
+            <text class='theme-color'>￥{{skuInfoData.price}}</text>
+            <text class='original-price' wx:if="{{skuInfoData.originalPrice}}">￥{{skuInfoData.originalPrice}}</text>
+          </view>
+          <!-- 拼单商品 -->
+          <view class='price' wx:if="{{skuInfoData.type == 'spell'}}">
+            <!-- 拼单价格 -->
+            <view wx:if="{{isSpellSinglePrice}}">
+              <text class='theme-color'>￥{{skuInfoData.spellPrice}}</text>
+              <text class='original-price' wx:if="{{skuInfoData.price}}">￥{{skuInfoData.price}}</text>
+            </view>
+            <!-- 原价 -->
+            <view wx:else>
+              <text class='theme-color'>￥{{skuInfoData.price}}</text>
+            </view>
+          </view>
+          <view class='prompt'><text wx:for="{{skuInfoData.propName}}" wx:key="{{index}}">{{item[0]}}</text></view>
+          <view class='stock'>stock: {{skuInfoData.stock}}</view>
+          <i-count-down
+          class="choose-group"
+          wx:if="{{skuInfoData.endTime && skuInfoData.type == 'group'}}"
+          target="{{skuInfoData.endTime*1000}}"
+          current="{{skuInfoData.currentTime*1000}}"
+          show-day="{{true}}"
+          clear-timer="{{clearTimer}}"
+          bindcallback="myLinsterner"
+          ></i-count-down>
+        </view>
+        <view class='iconfont icon-guanbi' bindtap='handleCancel'></view>
+       </view>
+       <scroll-view
+        scroll-y
+        class='sku-box'>
+        <view class="commodity_attr_list"> 
+    <!--每组属性-->
+    <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex" wx:key="{{attrIndex}}"> 
+      <!--属性名-->
+      <view class="attr_name">{{attrValueObj.attrKey}}</view> 
+ 
+      <!--属性值-->
+      <view class="attr_value_box"> 
+          <!--每个属性值-->
+                <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
+                data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-code="{{attrCode}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex" wx:key="{{valueIndex}}">{{value}}</view> 
+            </view> 
+        </view> 
+      </view> 
+       </scroll-view>
+       <view class='count'>
+        Quantity
+        <view wx:if="{{!skuInfoData}}">
+            <i-input-number value="{{ number }}" min="1" max="{{goodsData.sumStock}}" bindchange="handleChangeNumber" />
+        </view>
+        <view wx:else>
+            <i-input-number value="{{ number }}" min="1" max="{{skuInfoData.stock}}" bindchange="handleChangeNumber" />
+        </view>
+       </view>
+       <view class='done-btn'>
+        <view wx:if="{{type=='buy'}}" class='buy-done' bindtap='bindBuy'>Done</view>
+        <view wx:if="{{type=='spell'}}" class='buy-done' bindtap='bindSpell'>Done</view>
+        <view wx:if="{{type=='cart'}}" class='cart-done' bindtap='bindAddCart'>Done</view>
+        <view wx:if="{{type=='all'}}" class='cart-buy'>
+          <view bindtap='bindAddCart'>Add To Cart</view>
+          <view bindtap='bindBuy'>Buy Now</view>
+        </view>
+       </view>
+    </view>
+  </i-action-sheet>
+  <!-- 获取优惠券模态框 -->
+  <i-action-sheet visible="{{ couponVisible }}" show-cancel bind:cancel="handleCancelCoupon"  show-cancel="{{ false }}" mask-closable="{{ true }}">
+    <view class='selece-goods-info' slot="header">
+      <view class='content-coupon'>
+        <view class='title'>Coupon ( {{goodsData.couponList.length}} )</view>
+        <scroll-view
+        scroll-y>
+          <view class='coupn-list'>
+            <view class='coupon-item' wx:for="{{goodsData.couponList}}" wx:key="{{index}}"> 
+              <view>￥<text>{{item.reduce}}</text> </view>
+              <view class='info-title-container'>
+                <view class='info-title'>
+                  <view>{{item.name}}</view>
+                  <view wx:if="{{item.isGet == 0}}" data-id='{{item.couponId}}' bindtap='getCoupons'>GET</view>
+                  <view class='geted' wx:if="{{item.isGet == 1}}" >Collected</view>
+                </view>
+                <view class='info-text'>For Order to <text>{{'RMB' + item.over}}</text> or More</view>
+                <view class='time'>{{item.startTime}}-{{item.endTime}}</view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+        <view class='done-btn' bindtap='handleCancelCoupon'>
+          Done
+        </view>
+      </view>
+    </view>
+  </i-action-sheet>
+  <!-- 参加拼单模态框 -->
+  <i-action-sheet visible="{{ spellVisible }}" show-cancel bind:cancel="handleCancelSpell"  show-cancel="{{ false }}" mask-closable="{{ true }}">
+    <view class='selece-spell-info' slot="header">
+      <view class='content-spell'>
+        <view class='title'>Group Buy List  <text bindtap="handleCancelSpell" class="iconfont icon-guanbi"></text> </view>
+        <scroll-view
+        scroll-y>
+          <spellItem wx:for="{{goodsData.spellInfo.spellList}}"  bind:showSpell="openBuyInfo" data="{{item}}" wx:key="{{index}}" />
+        </scroll-view>
+      </view>
+    </view>
+  </i-action-sheet>
+  <i-modal visible="{{ groupVisible }}" ok-text="Done" show-cancel="{{false}}" bind:ok="refreshPage" bind:cancel="handleClose2">
+  <view>This Flash Sale has expired, thank you for your participation.</view>
+</i-modal>
+</view>

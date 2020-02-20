@@ -1,0 +1,90 @@
+/* pages/shop-details/shop-details.wxss */
+.shop-container {
+  padding-bottom: 80rpx;
+}
+.head {
+  background-color: #f9421e;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.head > view {
+  display: flex;
+}
+.head image {
+  width: 80rpx;
+  height: 80rpx;
+}
+.head text {
+  color: #fff;
+  line-height: 80rpx;
+  padding-left: 20rpx;
+  font-weight: 900;
+}
+.head .iconfont {
+  line-height: 80rpx;
+  width: 80rpx;
+  text-align: center;
+  color: #fff;
+}
+.banner {
+  display: flex;
+}
+.banner > view {
+  flex: 1;
+  line-height: 80rpx;
+  text-align: center;
+}
+.banner > view:after {
+  content: "|";
+  float: right;
+  color: #dfdfdf;
+}
+.banner > view:last-child:after {
+  content: "";
+  float: right;
+  color: #dfdfdf;
+}
+.home.active {
+  color: #f9421e;
+}
+.content image {
+  width: 100%;
+  display: block;
+}
+.bottom-row {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+  z-index: 100;
+  display: flex;
+  background-color: #fff;
+}
+.bottom-row > view {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  line-height: 80rpx;
+  position: relative;
+}
+.bottom-row > view:first-child:after {
+  content: "|";
+  position: absolute;
+  right: -5px;
+  top: 0;
+  color: #dfdfdf;
+}
+.chat-btn {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+.bottom-row > view .iconfont {
+  margin-right: 15rpx;
+}

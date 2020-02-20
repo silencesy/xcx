@@ -1,0 +1,84 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/categories/categories",
+    "pages/categories/goodsList",
+    "pages/guide/guide",
+    "pages/cart/cart",
+    "pages/account/account",
+    "pages/goods-details/goods-details",
+    "pages/article-details/article-details",
+    "pages/deal-group-list/deal-group-list",
+    "pages/shop-details/shop-details",
+    "pages/shop-list/shop-list",
+    "pages/shop-goods-list/shop-goods-list",
+    "pages/shop-search/shop-search",
+    "pages/global-search/global-search",
+    "pages/order/order-list",
+    "pages/order/order-details",
+    "pages/address-module/address-list",
+    "pages/address-module/add-address",
+    "pages/wishlist/wishlist",
+    "pages/coupons/coupons",
+    "pages/coupons/get-coupons",
+    "pages/contact/contact",
+    "pages/authorization/authorization",
+    "pages/authorization/authorized-login",
+    "pages/authorization/bind-phone",
+    "pages/order/logistics",
+    "pages/coupons/coupon-goods",
+    "pages/order/order-preview",
+    "pages/order/pay",
+    "pages/order/payed",
+    "pages/order/unpaid",
+    "pages/comment/comment",
+    "pages/comment/comment-list",
+    "pages/spell/spell"
+  ],
+  "window": {
+    "backgroundColor": "#f2f2f2",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6442b",
+    "navigationBarTitleText": "thMart",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "color": "#919191",
+    "selectedColor": "#f6442b",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "Home",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-cover.png"
+      },
+      {
+        "pagePath": "pages/categories/categories",
+        "text": "Categories",
+        "iconPath": "images/category.png",
+        "selectedIconPath": "images/category-cover.png"
+      },
+      {
+        "pagePath": "pages/guide/guide",
+        "text": "Travel",
+        "iconPath": "images/travel.png",
+        "selectedIconPath": "images/travel-cover.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "Cart",
+        "iconPath": "images/cart.png",
+        "selectedIconPath": "images/cart-cover.png"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "text": "My Account",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-cover.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

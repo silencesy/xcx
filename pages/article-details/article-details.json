@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "baseArticle": "/components/base/base-article2/base-article"
+  }
+}

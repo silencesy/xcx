@@ -1,0 +1,40 @@
+<!--components/home/floor/floor.wxml-->
+<view class='floor'>
+  <image class='banner-img' bindtap='goList' mode="widthFix" src='{{data.pic}}'></image>
+  <scroll-view class='floor-scroll-view' scroll-x="true" >
+    <view class='item' wx:for="{{data.data.length/2}}" wx:key="{{index}}">
+      <view class='item-goods' wx:if="{{data.data[(index+1)*2-2].pic}}"  data-id="{{data.data[(index+1)*2-2].id}}" bindtap='goDetails'>
+        <image lazy-load="{{true}}" src='{{data.data[(index+1)*2-2].pic}}'></image>
+        <image wx:if="{{data.data[(index+1)*2-2].saleType.type=='sale'}}" 
+                class='icon sale' src='../../../images/sale.png'></image>
+        <image wx:if="{{data.data[(index+1)*2-2].saleType.type=='group'}}"
+                 class='icon group' src='../../../images/group.png'></image>
+        <image wx:if="{{data.data[(index+1)*2-2].saleType.type=='spell'}}"
+                 class='icon group' src='../../../images/duodeal.png'></image>
+        <view class='goods-name'>
+          {{data.data[(index+1)*2-2].title}}
+        </view>
+        <view class='goods-price'>
+          <view class='theme-color'>￥{{data.data[(index+1)*2-2].price}}</view>
+          <view wx:if="{{data.data[(index+1)*2-2].originalPrice}}">￥{{data.data[(index+1)*2-2].originalPrice}}</view>
+        </view>
+      </view>
+      <view class='item-goods' wx:if="{{data.data[(index+1)*2-1].pic}}" data-id="{{data.data[(index+1)*2-1].id}}" bindtap='goDetails'>
+        <image lazy-load="{{true}}" src='{{data.data[(index+1)*2-1].pic}}'></image>
+        <image wx:if="{{data.data[(index+1)*2-2].saleType.type=='sale'}}" 
+                class='icon sale' src='../../../images/sale.png'></image>
+        <image wx:if="{{data.data[(index+1)*2-2].saleType.type=='group'}}"
+                 class='icon group' src='../../../images/group.png'></image>
+        <image wx:if="{{data.data[(index+1)*2-2].saleType.type=='spell'}}"
+                 class='icon group' src='../../../images/duodeal.png'></image>
+        <view class='goods-name'>
+          {{data.data[(index+1)*2-1].title}}
+        </view>
+        <view class='goods-price'>
+          <view class='theme-color'>￥{{data.data[(index+1)*2-1].price}}</view>
+          <view wx:if="{{data.data[(index+1)*2-1].originalPrice}}">￥{{data.data[(index+1)*2-1].originalPrice}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

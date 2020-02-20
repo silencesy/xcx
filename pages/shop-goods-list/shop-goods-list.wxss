@@ -1,0 +1,36 @@
+/* pages/shop-goods-list/shop-goods-list.wxss */
+page {
+  background-color: #eee;
+  padding-top: 190rpx;
+}
+.option-item.active {
+  color: #F9421E;
+}
+.top-fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 180rpx;
+  background-color: #eee;
+  z-index: 999;
+}
+.banner {
+  display: flex;
+  background-color: #fff;
+}
+.banner > view {
+  flex: 1;
+  line-height: 80rpx;
+  text-align: center;
+}
+.banner > view:after {
+  content: "|";
+  float: right;
+  color: #dfdfdf;
+}
+.banner > view:last-child:after {
+  content: "";
+  float: right;
+  color: #dfdfdf;
+}

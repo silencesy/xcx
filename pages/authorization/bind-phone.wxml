@@ -1,0 +1,13 @@
+<!--pages/authorization/bind-phone.wxml-->
+<!--pages/authorization/authorization.wxml-->
+<view class='container'>
+  <view class='title'>
+    <image src='../../images/logo.png'></image>
+    <view class='info'>
+      <view>thMart is requesting to access your mobile number</view>
+      <view>* thMart promises to protect the privacy and security of your account information.</view>
+      <button class='btn' open-type="getPhoneNumber" lang="zh_CN" bindgetphonenumber="bindgetphonenumber">Confirm</button>
+    </view>
+  </view>
+</view>
+

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "baseSwiper": "/components/base/goods-swiper/swiper",
+    "spellItem": "/components/base/spell-item/spell-item",
+    "i-action-sheet": "../../dist/action-sheet/index",
+    "i-input-number": "../../dist/input-number/index",
+    "i-count-down": "../../dist/count-down/index",
+    "i-modal": "../../dist/modal/index",
+    "poster": "wxa-plugin-canvas/poster"
+  }
+}

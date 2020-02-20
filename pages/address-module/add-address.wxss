@@ -1,0 +1,78 @@
+/* pages/address-module/add-address.wxss */
+page {
+  background-color: #eee;
+  padding: 20rpx 20rpx 100rpx 20rpx;
+  box-sizing: border-box;
+}
+.add-address-container {
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+.row {
+  display: flex;
+  border-bottom: 1px solid #dfdfdf;
+  line-height: 100rpx;
+  padding: 0 20rpx;
+  align-items: center;
+}
+.row > view {
+  white-space:nowrap;
+  margin-right: 20rpx;
+}
+.row input {
+  display: block;
+  width: 100%;
+}
+.addres-info-box {
+  padding: 0 20rpx 20rpx 20rpx;
+}
+.addres-info {
+  padding: 20rpx;
+  border: 1px solid #dfdfdf;
+  border-radius: 8rpx;
+  width: 100%;
+  margin-top: 20rpx;
+  color: #999;
+}
+.add-address-btn {
+  position: fixed;
+  bottom: 20rpx;
+  left: 0;
+  width: 100%;
+  height: 80rpx;
+  z-index: 333;
+  padding: 0 20rpx;
+}
+.add-address-btn .text {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #f9421e;
+  color: #fff;
+  border-radius: 80rpx;
+}
+.default-btn {
+  display: flex;
+  align-items: center;
+  padding: 0rpx 20rpx 20rpx 20rpx;
+}
+.not-selected {
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border: 1px solid #dfdfdf;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.iconfont.icon-xuanzhong1 {
+  color: #F9421E;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 40rpx;
+  margin-right: 10rpx;
+}
+.active {
+  color: #F9421E;
+}

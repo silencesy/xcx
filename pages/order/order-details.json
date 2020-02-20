@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "shopGoodsSection": "/components/base/shop-goods-section/shop-goods-section"
+  }
+}

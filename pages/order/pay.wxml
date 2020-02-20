@@ -1,0 +1,40 @@
+<!--pages/order/pay.wxml-->
+<view class='container' wx:if="{{data}}">
+  <view>
+    <view>Order No. :</view>
+    <view>{{data.orderNumber}}</view>
+  </view>
+  <view>
+    <view>Ordered:</view>
+    <view>{{data.orderTime}}</view>
+  </view>
+  <view>
+    <view>Receiver:</view>
+    <view>{{data.fullName}} {{data.phone}}</view>
+  </view>
+  <view>
+    <view>Email:</view>
+    <view>{{data.email}}</view>
+  </view>
+  <view>
+    <view>Address:</view>
+    <view>{{data.province}} {{data.regionDetail}}</view>
+  </view>
+  <view>
+    <view>Final Price:</view>
+    <view class='theme-color'>￥{{data.priceTotal}}</view>
+  </view>
+  <!-- <view>
+    <view>Final Price:</view>
+    <view class='theme-color'>￥{{data.priceTotal}}</view>
+  </view> -->
+  <view wx:if="{{data.buyerRemark!=0}}">
+    <view>Remark:</view>
+    <view>{{data.buyerRemark}}</view>
+  </view>
+  <view class='img-box'>
+    <view class='btn'>
+      <image bindtap='goPayed' src='../../images/pay.png'></image>
+    </view>
+  </view>
+</view>

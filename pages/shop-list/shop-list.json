@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "searchRow": "/components/base/search-row/search-row",
+    "pullUpLoading": "/components/base/pull-up-loading/pull-up-loading",
+    "shopRow": "/components/base/shop-row/shop-row"
+  }
+}

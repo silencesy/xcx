@@ -1,0 +1,26 @@
+<!--components/home/floor/floor.wxml-->
+<view class='floor'>
+  <image class='banner-img' mode="widthFix" src='{{data.pic}}' bindtap='bindGoList'></image>
+  <scroll-view class='floor-scroll-view' scroll-x="true" >
+    <view class='item' wx:for="{{data.data.length/2}}" wx:key="{{index}}">
+      <view class='item-goods'
+        wx:if="{{data.data[(index+1)*2-2].pic}}"
+        data-id='{{data.data[(index+1)*2-2].id}}' 
+        bindtap='goDetails'> 
+        <image lazy-load="{{true}}" src='{{data.data[(index+1)*2-2].pic}}'></image>
+        <view class='goods-name'>
+          {{data.data[(index+1)*2-2].title}}
+        </view>
+      </view>
+      <view class='item-goods' 
+        wx:if="{{data.data[(index+1)*2-1].pic}}" 
+        data-id='{{data.data[(index+1)*2-1].id}}'
+        bindtap='goDetails'>
+        <image lazy-load="{{true}}" src='{{data.data[(index+1)*2-1].pic}}'></image>
+        <view class='goods-name'>
+          {{data.data[(index+1)*2-1].title}}
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,11 @@
+<!--pages/authorization/authorized-login.wxml-->
+<view>
+  <view class="top-container">
+    <image 
+    src="{{userInfo.avatarUrl}}"
+    ></image>
+    <view>{{userInfo.nickName}}</view>
+    <view>Welcome back!</view>
+  </view>
+  <view bindtap="login" class="btn">Wechat Login</view>
+</view>

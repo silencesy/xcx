@@ -1,0 +1,16 @@
+<!--components/base/sort/sort.wxml-->
+<view class='sort-container {{borderBottom?"border-bottom":""}}'>
+    <view bindtap='tab' class='{{active=="createTime_desc"?"active":""}}' id="createTime_desc">
+      <text>Latest</text>
+    </view>
+    <view bindtap='tab' class='{{active=="sellNumber_desc"?"active":""}}' id="sellNumber_desc">
+      <text>Sale</text>
+    </view>
+    <view bindtap='tab' id="price_desc">
+      <text class='{{active=="price_desc"?"active":""}}'>Price</text>
+      <view>
+        <view class='top {{active=="price_desc" && lift=="price_asc"?"active":""}}'></view>
+        <view class='down {{active=="price_desc" && lift=="price_desc"?"active":""}}'></view>
+      </view>
+    </view>
+  </view>

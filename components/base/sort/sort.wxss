@@ -1,0 +1,40 @@
+/* components/base/sort/sort.wxss */
+.sort-container {
+  display: flex;
+}
+.border-bottom { 
+  border-bottom: 1rpx solid #dfdfdf;
+}
+.sort-container text {
+  height: 100rpx;
+  line-height: 100rpx;
+  display: inline-block;
+}
+.sort-container > view {
+  flex: 1;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 32rpx;
+}
+.sort-container > view:nth-child(3) {
+  display: flex;
+  justify-content: center;
+}
+.sort-container > view:nth-child(3) > view {
+  display: flex;
+  flex-direction: column;
+}
+.sort-container > view:nth-child(3) > view view {
+  height:12rpx;
+  line-height:88rpx;
+}
+.active {
+	color: #F9421E;
+}
+.active text {
+  border-bottom: 2px solid #F9421E;
+}
+text.active {
+  border-bottom: 2px solid #F9421E;
+}

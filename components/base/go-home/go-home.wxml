@@ -1,0 +1,2 @@
+<!--components/base/go-home/go-home.wxml-->
+<view class="go-home icon" bindtap="goHome"></view>

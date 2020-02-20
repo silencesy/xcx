@@ -1,0 +1,68 @@
+<!--pages/wishlist/wishlist.wxml-->
+<!--pages/guide/guide.wxml-->
+<view class='article-container'>
+  <scroll-view class='title-scroll' scroll-with-animation="{{true}}" scroll-left="{{scrollLeft}}" scroll-x="{{true}}">
+    <view class='title' bindtap='tab'>
+      <view class='{{showId==0?"active":""}}' id="0">
+        <text id="0">All</text>
+      </view>
+      <view class='{{showId==1?"active":""}}' id="1">
+        <text id="1">Unpaid</text>
+      </view>
+      <view class='{{showId==2?"active":""}}' id="2">
+        <text id="2">Unshipped</text>
+      </view>
+      <view class='{{showId==3?"active":""}}' id="3">
+        <text id="3">In Progress</text>
+      </view>
+      <view class='{{showId==4?"active":""}}' id="4">
+        <text id="4">Shipped</text>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='content'>
+    <swiper bindchange="bindchange" current="{{showId}}" duration="{{duration}}">
+      <swiper-item>
+          <scroll-view scroll-y bindscrolltolower="getData">
+            <pullUpLoading status="{{status}}">
+              <orderItem binddeleteorder="bindShowLayer" wx:for="{{allData}}" wx:key="{{index}}" data="{{item}}" ordericon="icon-icon- iconfont" />
+            </pullUpLoading>
+          </scroll-view>
+      </swiper-item>
+      <swiper-item>
+          <scroll-view scroll-y bindscrolltolower="getData2">
+            <pullUpLoading status="{{status2}}">
+              <orderItem binddeleteorder="bindShowLayer" wx:for="{{unpaidData}}" wx:key="{{index}}" data="{{item}}" ordericon="icon-icon- iconfont" />
+            </pullUpLoading>
+          </scroll-view>
+      </swiper-item>
+      <swiper-item>
+          <scroll-view scroll-y bindscrolltolower="getData3">
+            <pullUpLoading status="{{status3}}">
+              <orderItem binddeleteorder="bindShowLayer" wx:for="{{unShippedData}}" wx:key="{{index}}" data="{{item}}" ordericon="icon-icon- iconfont" />
+            </pullUpLoading>
+          </scroll-view>
+      </swiper-item>
+      <swiper-item>
+          <scroll-view scroll-y bindscrolltolower="getData4">
+            <pullUpLoading status="{{status4}}">
+              <orderItem binddeleteorder="bindShowLayer" wx:for="{{inProgressData}}" wx:key="{{index}}" data="{{item}}" ordericon="icon-icon- iconfont" />
+            </pullUpLoading>
+          </scroll-view>
+      </swiper-item>
+       <swiper-item>
+          <scroll-view scroll-y bindscrolltolower="getData5">
+            <pullUpLoading status="{{status5}}">
+              <orderItem binddeleteorder="bindShowLayer" wx:for="{{shippedDta}}" wx:key="{{index}}" data="{{item}}" ordericon="icon-icon- iconfont" />
+            </pullUpLoading>
+          </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 模态框 -->
+  <i-modal visible="{{ isShowLayer }}" cancel-text="Cancel" ok-text="Done" bind:ok="bindDone" bind:cancel="bindCancle">
+      <view>Are you sure to delete?</view>
+  </i-modal>
+  <goHome icon="iconfont icon-shanghu1" />
+</view>
+

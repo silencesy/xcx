@@ -1,0 +1,15 @@
+<!--pages/shop-search/shop-search.wxml-->
+<view class='shop-search-container'>
+  <view class='search-row'>
+    <view class='search-input-box'>
+      <input placeholder="Search" focus="{{true}}" bindinput="bindInputValue" bindconfirm="bindSearch"></input>
+      <view class='search-btn' bindtap='bindSearch'>Search</view>
+    </view>
+    <sort top="iconfont icon-xiangshangjiantou-copy-copy-copy-copy" 
+          down="iconfont icon-xiangshangjiantou-copy-copy-copy" 
+          bind:sortevent="sortevent"/>
+  </view>
+  <pullUpLoading status="{{status}}">
+      <goodsRow rows="2" data="{{data}}" />
+    </pullUpLoading>
+</view>

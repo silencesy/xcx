@@ -1,0 +1,44 @@
+<!--pages/order/payed.wxml-->
+<view wx:if="{{data}}">
+  <view class='status'>
+    <view class='iconfont icon-chenggongcopy-'></view>
+    <view class='info'>Payment Success</view>
+  </view>
+  <view class='container'>
+    <view class='info'>
+      <view>
+        <view>Order No. :</view>
+        <view>{{data.orderNumber}}</view>
+      </view>
+      <view>
+        <view>Ordered:</view>
+        <view>{{data.orderTime}}</view>
+      </view>
+      <view>
+        <view>Receiver:</view>
+        <view>{{data.fullName}} {{data.phone}}</view>
+      </view>
+      <view>
+        <view>Email:</view>
+        <view>{{data.email}}</view>
+      </view>
+      <view>
+        <view>Address:</view>
+        <view>{{data.province}} {{data.regionDetail}}</view>
+      </view>
+      <view>
+        <view>Final Price:</view>
+        <view class='theme-color'>￥{{data.priceTotal}}</view>
+      </view>
+      <view wx:if="{{data.buyerRemark!=0}}">
+        <view>Remark:</view>
+        <view>{{data.buyerRemark}}</view>
+      </view>
+    </view>
+    <view class='bottom-btn'>
+      <view bindtap='goOrderList'>Order List</view>
+      <view bindtap='goHome'>Home</view>
+    </view>
+  </view>
+</view>
+

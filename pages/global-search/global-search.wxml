@@ -1,0 +1,27 @@
+<!--pages/global-search/global-search.wxml-->
+<view class='search-container'>
+  <view class='top-row'>
+    <view class='search-row'>
+      <view class='search-input-box'>
+        <input placeholder="Search" value="{{ params.search }}" focus="{{true}}" bindinput="bindInputValue" bindconfirm="bindSearch"></input>
+        <view class='search-btn' bindtap='bindSearch'>Search</view>
+      </view>
+    </view>
+    <view class='class-box'>
+      <view data-id='goods' bindtap='tab' class='goods {{active=="goods"?"active": ""}}'>
+        <text>Products</text>
+      </view>
+      <view data-id='shops' bindtap='tab' class='shops {{active=="shops"?"active": ""}}'>
+        <text>Shops</text>
+      </view>
+      <view data-id='articles' bindtap='tab' class='articles {{active=="articles"?"active": ""}}'>
+        <text>Editor’s Pick</text>
+      </view>
+    </view>
+  </view>
+  <pullUpLoading status="{{status}}">
+    <goodsRow wx:if="{{active=='goods'}}" rows="2" data="{{data}}" />
+    <shopRow wx:if="{{active=='shops'}}" data="{{data}}" line1="line1"/>
+    <baseArticle wx:if="{{active=='articles'}}" data="{{data}}" />
+  </pullUpLoading>
+</view>

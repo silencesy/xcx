@@ -1,0 +1,81 @@
+<!--pages/account/account.wxml-->
+<view class='user-container'>
+  <view class='top-info' wx:if="{{ data }}">
+    <image src='{{data.pic}}'></image>
+    <view>{{data.nickname}}</view>
+  </view>
+  <view class='top-info' wx:else >
+    <image src='../../images/login-img.png'></image>
+    <view bindtap="bindGoLogIn">LOGIN / SIGN UP</view>
+  </view>
+  <view class='order-container'>
+    <view class='title' data-id='0' bindtap='bindGoOrder'>
+      <view>My Orders</view>
+      <view class='icon'>All <view class='iconfont icon-combinedshapefuben'></view></view>
+    </view>
+    <view class='order-status'>
+      <view data-id='1' bindtap='bindGoOrder'>
+        <view class='iconfont icon-daifukuan'></view>
+        <view>Unpaid</view>
+      </view>
+      <view data-id='2' bindtap='bindGoOrder'>
+        <view class='iconfont icon-fahuo'></view>
+        <view>Unshipped</view>
+      </view>
+      <view data-id='3' bindtap='bindGoOrder'>
+        <view class='iconfont icon-shouhuodizhi'></view>
+        <view>In Progress</view>
+      </view>
+      <view data-id='4' bindtap='bindGoOrder'>
+        <view class='iconfont icon-daishouhuo'></view>
+        <view>Shipped</view>
+      </view>
+    </view>
+  </view>
+  <view class='features-container'>
+    <view class='features-row' bindtap='bindGoAddress'>
+      <view class='left'>
+        <view class='iconfont icon-shouhuodizhi'></view>
+        Address Book
+      </view>
+      <view class='right iconfont icon-combinedshapefuben'></view>
+    </view>
+    <view class='features-row' bindtap='bindGoWishList'>
+      <view class='left'>
+        <view class='iconfont icon-shoucang'></view>
+        Wishlist
+      </view>
+      <view class='right iconfont icon-combinedshapefuben'></view>
+    </view>
+    <view class='features-row' bindtap='bindGoCoupons'>
+      <view class='left'>
+        <view class='iconfont icon-youhuiquan'></view>
+        thMart-Coupons
+      </view>
+      <view class='right iconfont icon-combinedshapefuben'></view>
+    </view>
+    <!-- <view class='features-row' bindtap='bindGoContact'> -->
+    <view class='features-row'>
+      <view class='left'>
+        <view class='iconfont icon-shouhou'></view>
+        Customer Service
+      </view>
+      <button class="concat-btn" open-type="contact"></button>
+      <view class='right iconfont icon-combinedshapefuben'></view>
+    </view>
+    <!-- <view class='features-row'>
+      <view class='left'>
+        <view class='iconfont icon-shezhi'></view>
+        Setting
+      </view>
+      <view class='right iconfont icon-combinedshapefuben'></view>
+    </view> -->
+  </view>
+  <view wx:if="{{ isRegister }}" bindtap="goSignOut" class="sign-out">Sign out</view>
+  <i-modal visible="{{ signOutvisible }}"
+    cancel-text="Cancel"
+    ok-text="Done"
+    bind:ok="bindSignOut" bind:cancel="cancelSignOut">
+    <view>Are you sure to log off？</view>
+  </i-modal>
+</view>

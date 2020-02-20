@@ -1,0 +1,20 @@
+<!--pages/coupons/get-coupons.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view>
+  <image class="width100" mode="widthFix" src="{{data.mpic}}"></image>
+  <view class="list">
+   <view class="item" wx:for="{{data.data}}" wx:key="{{index}}">
+    <image mode="widthFix" wx:if="{{item.isdiscount == 1}}" class="lingqu" src="../../images/lingqu.png"></image>
+    <image class="width100" mode="widthFix" src="{{item.pic}}"></image>
+    <view data-id="{{item.id}}" bindtap="bindUseCoupon" class="quyu"></view>
+    <button wx:if="{{item.isdiscount == 0}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="bindGetCoupon">Get Now</button>
+    <button wx:if="{{item.isdiscount == 1}}" data-id="{{item.id}}" bindtap="bindUseCoupon">Use Now</button>
+   </view>
+  </view>
+  <view class="text-content">
+    <view class="title">Coupon rule:</view>
+    <view class="text">
+      <template is="wxParse" data="{{wxParseData:detailsdata.nodes}}"/>
+    </view>
+  </view>
+</view>

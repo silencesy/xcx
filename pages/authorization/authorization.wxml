@@ -1,0 +1,11 @@
+<!--pages/authorization/authorization.wxml-->
+<view class='container'>
+  <view class='title'>
+    <image src='../../images/logo.png'></image>
+    <view class='info'>
+      <view>thMart is requesting the following permissions:</view>
+      <view>* Your public information (name, profile photo, location and gender)</view>
+      <button class='btn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">Confirm</button>
+    </view>
+  </view>
+</view>

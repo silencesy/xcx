@@ -1,0 +1,13 @@
+/* pages/deal-group-list/deal-group-list.wxss */
+.list-container {
+  padding-top: 210rpx;
+}
+.top-content {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 200rpx;
+  background-color: #fff;
+  z-index: 999;
+}

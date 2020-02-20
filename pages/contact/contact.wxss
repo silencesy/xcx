@@ -1,0 +1,8 @@
+/* pages/contact/contact.wxss */
+.concat-container {
+  padding-top: 20rpx;
+}
+.concat-container image {
+  width: 100%;
+  display: block;
+}

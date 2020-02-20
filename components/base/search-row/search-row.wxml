@@ -1,0 +1,5 @@
+<!--components/base/search-row/search-row.wxml-->
+<view class='search-container {{bottomline?"bottom-line":""}}' bindtap='bindGoSearch'>
+  <view class='input'>Search</view>
+  <view class='iconfont icon-sousuo'></view>
+</view>

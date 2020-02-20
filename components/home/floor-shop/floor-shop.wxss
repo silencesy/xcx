@@ -1,0 +1,50 @@
+/* components/home/floor/floor.wxss */
+.floor .banner-img {
+  width: 750rpx;
+  height: 197rpx;
+}
+.floor-scroll-view {
+  /* height: 440rpx; */
+  display: flex;
+  /* width: 100%; */
+  white-space: nowrap;
+  padding: 10rpx 0 20rpx 0;
+}
+.floor-scroll-view .item {
+  width: 214rpx;
+  margin-right: 20rpx;
+  display: inline-block;
+  vertical-align: top;
+}
+.floor-scroll-view .item:nth-child(1) {
+  margin-left: 20rpx;
+}
+.item-goods {
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.item-goods:nth-child(2n) {
+  margin-bottom: 0;
+}
+.item-goods image {
+  width: 214rpx;
+  height: 214rpx;
+  display: block;
+}
+.item-goods .goods-name {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  padding: 0 20rpx 10rpx 20rpx;
+  text-align: center;
+}
+.item-goods .goods-price {
+  display: flex;
+  justify-content: space-around;
+}

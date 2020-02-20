@@ -1,0 +1,57 @@
+<!--pages/wishlist/wishlist.wxml-->
+<!--pages/guide/guide.wxml-->
+<view class='article-container'>
+  <view class='title' bindtap='tab'>
+    <view class='{{showId==0?"active":""}}' id="0">
+      <text id="0">Products</text>
+    </view>
+    <view class='{{showId==1?"active":""}}' id="1">
+      <text id="1">Shops</text>
+    </view>
+  </view>
+  <view class='content'>
+    <swiper bindchange="bindchange" current="{{showId}}" duration="{{duration}}">
+      <swiper-item>
+          <scroll-view scroll-y bindscrolltolower="getData">
+            <pullUpLoading status="{{status}}">
+              <view class='goods-container'>
+                <view class='item' wx:for="{{goodsData}}"
+                   data-id='{{item.id}}' 
+                   wx:key="{{index}}"
+                   bindtap='goGoodsDetail'>
+                  <image src='{{item.pic}}'></image>
+                  <view class='info'>
+                    <view class='line2'>{{item.title}}</view>
+                    <view class='bottom'>
+                      <view class='theme-color'>￥{{item.price}}</view>
+                      <view class='iconfont icon-shoucang1 theme-color'></view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </pullUpLoading>
+          </scroll-view>
+      </swiper-item>
+      <swiper-item>
+          <scroll-view scroll-y bindscrolltolower="getData2">
+            <pullUpLoading status="{{status2}}">
+              <view class='goods-container shop'>
+                <view class='item' wx:for="{{shopData}}" wx:key="{{index}}"
+                      data-id='{{item.contentId}}' 
+                      bindtap='goShopDetails'>
+                  <image src='{{item.pic}}'></image>
+                  <view class='info'>
+                    <view class='bottom'>
+                      <view>￥{{item.name}}</view>
+                      <view class='iconfont icon-shoucang1 theme-color'></view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </pullUpLoading>
+          </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+

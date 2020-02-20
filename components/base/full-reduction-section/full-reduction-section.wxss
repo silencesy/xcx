@@ -1,0 +1,90 @@
+/* components/base/full-reduction-section/full-reduction-section.wxss */
+.container {
+  border: 1px solid #dfdfdf;
+  border-radius: 8rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+.container .title {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+}
+.iconfont.icon-shanghu1 {
+  color: #999;
+}
+.container .title .shop-name {
+  color: #666;
+  margin-left: 20rpx;
+}
+
+.container .content {
+  background-color: #F9F9F9;
+  padding: 20rpx;
+  /* display: flex; */
+}
+.container .content .info-box {
+  display: flex;
+}
+.container .content image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 16rpx;
+}
+.container .content .info {
+  width: 510rpx;
+  padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container .content .goods-name {
+  word-break:break-all;
+}
+.container .content  .bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.container .content  .bottom .price {
+  color: #f24827;
+}
+.container .content .type text {
+  color: #999;
+  font-size: 28rpx;
+}
+.tracking {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20rpx;
+}
+.tracking .tracking-btn {
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 350rpx;
+  text-align: center;
+  border: 1px solid #dfdfdf;
+  color: #666;
+  border-radius: 40rpx;
+}
+.total-price {
+  text-align: right;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.total-price text {
+  color: #F9421E;
+}
+.full-reduction-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-bottom: 1px solid #dfdfdf;
+}
+.after-redution-price {
+  text-align: right;
+  padding: 20rpx;
+}
+.theme-color {
+  color: #f24827!important;
+}

@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "baseSwiper": "/components/base/swiper/swiper",
+    "floor": "/components/home/floor/floor",
+    "floorShop": "/components/home/floor-shop/floor-shop",
+    "baseArticle": "/components/base/base-article/base-article",
+    "goodsRow": "/components/base/goods-row/goods-row",
+    "i-load-more": "../../dist/load-more/index"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 200
+}

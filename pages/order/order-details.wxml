@@ -1,0 +1,62 @@
+<!--pages/order/order-details.wxml-->
+<view class='container' wx:if="{{data}}">
+  <view class='top-info'>
+    <view class='theme-color title'>
+      <view class='iconfont icon-xinxi'></view>
+      <view>Notice</view>
+    </view>
+    <view class='text-info'>
+      If you need after-sales service, please contact us within 7 days after you receive the parcel. We will not accept the request if overdue. Thanks for your cooperation and understanding.
+    </view>
+  </view>
+  <view class='address'>
+    <view class='title'>
+      <view class='iconfont icon-shouhuodizhi'></view>
+      <view>Address</view>
+    </view>
+    <view class='addr-user-info'>
+      <view>{{data.fullName}}</view>
+      <view>{{data.phone}}</view>
+    </view>
+    <view class='addr-info'>
+      {{data.province}}{{data.regionDetail}}
+    </view>
+  </view>
+  <view class='shop-goods-section'>
+    <shopGoodsSection 
+      wx:for="{{data.data.brand}}"
+      bind:deliveryConfirmed="deliveryConfirmed"
+      shopicon="iconfont icon-shanghu1" 
+      data="{{item}}" 
+      status="{{data.status}}" 
+      orderNumber="{{data.orderNumber}}"
+      wx:key="{{index}}" />
+    <block wx:for="{{data.data.ticketqrs}}" wx:key="{{index}}">
+      <view class="qr" data-src="{{item.pic}}" bindtap="previewImage" >
+        <view>
+          Please show your QR code to the ticketing staff on site.
+        </view>
+        <view>
+          <image src="{{item.pic}}"></image>
+        </view>
+      </view>
+    </block>
+    <view class='total-price'>
+      <view>Total: <text class='theme-color'>￥{{data.priceTotal}}</text></view>
+    </view>
+  </view>
+  <view class='order-number' >
+    <view class='info'>
+      <view>Order No. : {{data.orderNumber}}</view>
+      <view>Ordered : {{data.orderTime}}</view>
+      <view wx:if="{{data.sendTime!=0}}">Ordered : {{data.sendTime}}</view>
+      <view wx:if="{{data.buyerRemark!=0}}">Remark : {{data.buyerRemark}}</view>
+    </view>
+    <view class='copy-btn' data-ordernumber='{{data.orderNumber}}' bindtap='copy'>Copy</view>
+  </view>
+  <view class='pay-row' wx:if="{{status==0}}">
+    <view>Total: <text class='theme-color'>￥{{data.priceTotal}}</text></view>
+    <view bindtap='bindGoPay' class='pay-btn'>Pay</view>
+  </view>
+</view>
+

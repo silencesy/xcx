@@ -1,0 +1,58 @@
+<!--components/base/shop-goods-section/shop-goods-section.wxml-->
+<view class='container'>
+  <view class='title'>
+    <view class='shopicon'></view>
+    <view class='shop-name'>{{data.brandName}}</view>
+  </view>
+  <view class='content' wx:for="{{data.data}}" wx:key="{{index}}">
+    <view class='info-box' bindtap='goDetail' data-id='{{item.goodsId}}'>
+      <image src='{{item.pic}}'></image>
+      <view class='info'>
+        <view class='goods-name'>{{item.title}}</view>
+          <view class='type'> <text wx:for="{{item.prop}}" wx:key="{{index}}">{{item[0]}}</text> </view>
+          <view class='bottom'>
+            <view class='price'>￥{{item.price}}</view>
+            <view>x{{item.number}}</view>
+          </view>
+        </view>
+    </view>
+    <view class='total-price' wx:if="{{status=='showTotalPrice'}}">
+      Total: <text>￥{{item.price * item.number}}</text>
+    </view>
+    <view class='tracking' wx:if="{{status==2}}">
+      <view class="theme_color" wx:if="{{item.company == 'mail'}}">We just sent the email, please kindly check your mailbox.</view>
+      <view class="theme_color" wx:elif="{{item.company == 'tk'}}">We have received your refund request, and you will be able to receive it within two business days.</view>
+      <view wx:else 
+        data-logistics='{{item.logistics}}' 
+        data-company='{{item.company}}' 
+        class='tracking-btn'
+        bindtap='tracking'>Tracking your order</view>
+      <view 
+        wx:if="{{!item.confirmtime}}" 
+        bindtap="deliveryConfirmed"
+        data-shopname="{{data.brandName}}"
+        data-id="{{item.id}}"
+        class='tracking-btn'>
+        Delivery Confirmed</view>
+    </view>
+    <view class='tracking' wx:if="{{status==3}}">
+      <view 
+        class="theme_color width-info" 
+        wx:if="{{item.company == 'mail'}}">We just sent the email, please kindly check your mailbox.</view>
+      <view
+        class="theme_color" 
+        wx:elif="{{item.company == 'tk'}}">We have received your refund request, and you will be able to receive it within two business days.</view>
+      <view wx:else
+        data-logistics='{{item.logistics}}' 
+        data-company='{{item.company}}' 
+        class='tracking-btn' 
+        bindtap='tracking'
+      >Tracking your order</view>
+      <view wx:if="{{item.company!='tk'}}" class='review-btn' data-comment="{{item.hasComment}}" data-id="{{item.id}}" bindtap='review'>Review</view>
+    </view>
+  </view>
+   <!-- 模态框 -->
+  <i-modal visible="{{ isShowLayer }}" cancel-text="Cancel" ok-text="Yes" bind:ok="bindDone" bind:cancel="bindCancle">
+      <view>Have you received your package?</view>
+  </i-modal>
+</view>

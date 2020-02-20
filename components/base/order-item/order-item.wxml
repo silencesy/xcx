@@ -1,0 +1,30 @@
+<!--components/base/order-item/order-item.wxml-->
+<view class='order-list'>
+  <view class='item'>
+    <view class='title'>
+      <view>
+        <view class='ordericon'></view>
+        <view class='order-number'>{{data.orderNumber}}</view>
+      </view>
+      <view class='status' wx:if="{{data.status==0 || data.status==5}}">Unpaid</view>
+      <view class='status' wx:if="{{data.status==1}}">Unshipped</view>
+      <view class='status' wx:if="{{data.status==2}}">In Progress</view>
+      <view class='status' wx:if="{{data.status==3}}">Shipped</view>
+      <view class='status' wx:if="{{data.status==4}}">Close</view>
+      <view class='status' wx:if="{{data.status==6}}">Share with Your Friend, {{data.number_left}} Vacancy Left</view>
+      <view class='status' wx:if="{{data.status==7}}">Completed</view>
+    </view>
+    <view class='img-box'>
+      <image wx:for="{{data.skuList}}" wx:key="{{index}}" src='{{item.pic}}'></image>
+    </view>
+    <view class='total-price'>
+      <view class=''>Total：<view class='number'>￥{{data.priceTotal}}</view> </view>
+    </view>
+    <view class='bottom-btn'>
+      <view data-id='{{data.orderNumber}}' data-status='{{data.status}}' bindtap='bindGoDetails'>Details</view>
+      <view data-ordernumber='{{data.orderNumber}}' bindtap='bindGopay' wx:if="{{data.status==0||data.status==5}}">Pay</view>
+      <view data-ordernumber='{{data.orderNumber}}' bindtap='bindGoSpell' wx:if="{{data.status==6}}">Invite Your Friends</view>
+      <view wx:if="{{data.status==4 || data.status==3}}" data-ordernumber='{{data.orderNumber}}' bindtap='deleteOrder'>Delete</view>
+    </view>
+  </view>
+</view>
